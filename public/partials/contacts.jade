@@ -1,0 +1,13 @@
+div.starter-template
+    p There are {{contacts.length}} contacts
+    div(ng-repeat='contact in contacts')
+        h3 {{contact.first_name}} {{contact.last_name}}
+        div {{contact.email}}
+        a(href='editContact/{{contact._id}}') Edit
+        | -
+        a(href='deleteContact/{{contact._id}}') Delete
+
+    div
+        pre Current Editable Contact
+            br
+            span(ng-bind="contact | json")

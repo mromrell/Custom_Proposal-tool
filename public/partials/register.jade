@@ -1,0 +1,29 @@
+div.starter-template
+    div#messages(ng-show="errorMessage") {{ errorMessage }}
+
+    h1 {{ registerTitle }}
+    p.lead {{ registerSubTitle }}
+    form.form-register(role='form', name='registerForm', ng-submit='doRegister()', style='max-width: 300px;', ng-disabled='disabled')
+        .form-group
+            input.form-control(type='text', name='email', ng-model='user.email', placeholder='Email Address', required)
+            span(ng-show="hasError('email')") Email address is required
+            span(ng-show="errorUsername") {{ errorUsername }}
+        .form-group
+            input.form-control(type='text', name='first_name', ng-model='user.first_name', placeholder='First name', required)
+            span(ng-show="hasError('first_name')") First name is required
+            span(ng-show="errorFirstName") {{ errorFirstName }}
+        .form-group
+            input.form-control(type='text', name='last_name', ng-model='user.last_name', placeholder='Last name', required)
+            span(ng-show="hasError('last_name')") Last name is required
+            span(ng-show="errorLastName") {{ errorLastName }}
+        .form-group
+            input.form-control(type='password', name='password', ng-model='user.password', placeholder='Password', required)
+            span(ng-show="hasError('password')") Password is required
+            span(ng-show="errorPassword") {{ errorPassword }}
+        button.btn.btn-default(type='submit') Submit
+        &nbsp;
+        a(href='/')
+            button.btn.btn-primary(type="button") Cancel
+
+    br
+    h4= info

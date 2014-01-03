@@ -1,0 +1,25 @@
+{
+    "name": "address-book-seed",
+    "version": "0.0.1",
+    "description": "A starter project for the Address Book project",
+    "repository": "https://github.com/DojoDevCamp/address-book-seed.git",
+    "engines": {
+        "node": "~0.10.23"
+    },
+    "dependencies": {
+        "express": "~3.2.6",
+        "jade": "~0.31.2",
+        "ejs": ">=0.8.5",
+        "mongoose": "latest",
+        "connect-mongo": "latest",
+        "underscore": "latest",
+        "passport": "latest",
+        "passport-local": "latest",
+        "passport-local-mongoose": "latest",
+        "bower": "~1.2.8"
+    },
+    "scripts": {
+        "postinstall": "./node_modules/bower/bin/bower install"
+    }
+}
+

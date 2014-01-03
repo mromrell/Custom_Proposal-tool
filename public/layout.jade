@@ -32,12 +32,12 @@ html(ng-app="addressBookApp", ng-controller="BaseController")
                                         a(href='javascript:void(0);', ng-click='doLogout()') Logout
         div(ng-view).container
 
-        hr
-
-        div
-            pre User session data
-                br
-                span(ng-bind="userSession | json")
+        //hr
+        //
+        //div
+        //    pre User session data
+        //        br
+        //        span(ng-bind="userSession | json")
 
         script(src='lib/angular/angular.js')
         script(src='lib/angular-route/angular-route.js')

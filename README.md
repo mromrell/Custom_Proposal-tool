@@ -1,4 +1,4 @@
-# The see for the Address Book project
+# The seed for the Address Book project
 
 This project is an application skeleton for your address book Web app.  It uses the Bower package manager to handle front-end
 dependencies, Node's package manager to handle back-end dependencies, with AngularJS/NodeJS handling app logic.

@@ -1,5 +1,29 @@
 # The seed for the Address Book project
 
+### Running the app during development
+
+* Make sure that NodeJS is installed
+* From the CLI, in the project directory, run `npm install`
+    * Choose option four when given the prompt "Unable to find a suitable version for angular, please choose one:"
+
+*) Inside PyCharm, set up a NodeJS configuration
+    * Add the Node.js server at server/server.js to the "JavaScript file" field.
+    * Add an environment variable to your Node.js configuration with name "MONGOLAB_URI". The value is the standard URI from your mongolab.com project page under "To connect using a driver via the standard URI." It looks like this:
+        mongodb://<dbuser>:<dbpassword>@ds033632.mongolab.com:62234/my_project
+    * In the MONGOLAB_URI, replace dbuser and dbpassword with your mongolab user password.
+
+Then navigate your browser to `http://localhost:<port>/` to see the app running in
+your browser.
+
+### Running the app in production (Heroku)
+
+* Create a Heroku account
+* Create a MongoLab account
+** In the server/server.js, replace <dbuser> and <dbpassword> with the MongoLab username and password, respectively
+* Create a Heroku app from the CLI (under the project directory)
+** heroku create [NAME]
+* git push heroku master
+
 This project is an application skeleton for your address book Web app.  It uses the Bower package manager to handle front-end
 dependencies, Node's package manager to handle back-end dependencies, with AngularJS/NodeJS handling app logic.
 
@@ -24,28 +48,6 @@ git push --mirror git@github.com:[GitHubUsername]/address-book.git # this will b
 cd ..
 rm -rf address-book-seed.git
 ```
-
-### Running the app during development
-
-* Make sure that NodeJS is installed
-* From the CLI, in the project directory, run `npm install`
-
-You can run the NodeJS server in two ways:
-
-* Run `server/server.js` from the CLI
-* Inside PyCharm, set up a NodeJS configuration
-
-Then navigate your browser to `http://localhost:<port>/` to see the app running in
-your browser.
-
-### Running the app in production (Heroku)
-
-* Create a Heroku account
-* Create a MongoLab account
-** In the server/server.js, replace <dbuser> and <dbpassword> with the MongoLab username and password, respectively
-* Create a Heroku app from the CLI (under the project directory)
-** heroku create [NAME]
-* git push heroku master
 
 ## Directory Layout
     

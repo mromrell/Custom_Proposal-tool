@@ -16,8 +16,13 @@ html(ng-app="addressBookApp", ng-controller="BaseController")
                     a.navbar-brand(href='/') Proposal Tool Project
                 .collapse.navbar-collapse
                     ul.nav.navbar-nav
-                        li(ng-class='{active:isActive("/home")}')
-                            a(href='/home') Home
+                        //li(ng-class='{active:isActive("/home")}')
+                        //    a(href='/home') Home
+                        li(class='dropdown', ng-class='{active:isActive(["/home", "other"])}', logged-in)
+                            a(href='/home', class='dropdown-toggle') Home
+                                ul(class='dropdown-menu')
+                                    li
+                                        a(href='/addProposal') Add Proposal
                         li(ng-class='{active:isActive("/")}', logged-out)
                             a(href='/') Login
                         li(class='dropdown', ng-class='{active:isActive(["/contacts", "other"])}', logged-in)

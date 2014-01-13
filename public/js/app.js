@@ -72,7 +72,6 @@ angular.module('addressBookApp', [
             when('/home', {
                 templateUrl: 'partials/index',
                 controller: 'IndexController',
-                proposalList:'partials/proposalList',
                 resolve: {
                     loggedin: checkLoggedin
                 }

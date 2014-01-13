@@ -1,3 +1,4 @@
+// This is the Catch-all route handler
 module.exports = function(app, routes) {
     app.get('/', routes.index);
     app.get('/partials/:name', routes.partials);

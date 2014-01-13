@@ -41,7 +41,7 @@ angular.module('addressBookApp', [
             return deferred.promise;
         };
 
-        $httpProvider.responseInterceptors.push(function ($q, $location) {
+        $httpProvider.responseInterceptors.push(function ($q, $location) {   // This intercepts a response coming back from node
             return function (promise) {
                 return promise.then(
                     function (response) {
@@ -72,6 +72,7 @@ angular.module('addressBookApp', [
             when('/home', {
                 templateUrl: 'partials/index',
                 controller: 'IndexController',
+                proposalList:'partials/proposalList',
                 resolve: {
                     loggedin: checkLoggedin
                 }

@@ -101,6 +101,13 @@ angular.module('addressBookApp', [
                     loggedin: checkLoggedin
                 }
             }).
+            when('/ExampleProposal', {
+                templateUrl: 'partials/ExampleProposal',
+                controller: 'ExampleProposalController',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            }).
             otherwise({
                 redirectTo: '/'
             });

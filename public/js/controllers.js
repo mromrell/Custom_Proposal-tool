@@ -70,6 +70,13 @@ angular.module('addressBookApp.controllers', [])
     .controller('IndexController', ['$scope', '$http', function($scope, $http) {
 
     }])
+    .controller('ExampleProposalController', ['$scope', function($scope) {
+        var exProp=[{
+            'id':'1',
+            'title':'Custom Website Cost'
+
+        }]
+    }])
     .controller('RegisterController', ['$scope', '$window', 'registerConstants', 'Restangular', 'SessionService', function($scope, $window, registerConstants, Restangular, SessionService) {
         $scope.user = {}
 

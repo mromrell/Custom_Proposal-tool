@@ -41,7 +41,7 @@ angular.module('proposalTool', [
             return deferred.promise;
         };
 
-        $httpProvider.responseInterceptors.push(function ($q, $location) {
+        $httpProvider.responseInterceptors.push(function ($q, $location) {   // This intercepts a response coming back from node
             return function (promise) {
                 return promise.then(
                     function (response) {

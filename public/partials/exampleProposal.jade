@@ -1,0 +1,19 @@
+div.starter-template
+    h1 {{proposal.title}}
+    p {{proposal.description}}
+    br
+    p Fill out the form below to get a price
+    br
+    div(ng-repeat='questions in proposal')
+        h3 {{question.title}}
+        p {{question.description}}
+        ul(ng-repeat='choice in choices')
+            li {{question.choice}}
+
+
+
+
+
+
+  //   Created by mromrell on 1/13/14.
+

@@ -1,2 +1,12 @@
 div.starter-template
     p This is the dashboard
+    p soon, You'll see a list of proposals that you've created
+    br
+    p There are {{proposals.length}} proposals in the System
+    div(ng-repeat='proposal in proposals')
+        h3 {{proposal.name}}
+        div {{proposal.description}}
+        a(href='editProposal/{{proposal._id}}') Edit
+        | -
+        a(href='deleteProposal/{{proposal._id}}') Delete
+

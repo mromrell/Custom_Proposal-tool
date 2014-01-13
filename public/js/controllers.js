@@ -114,17 +114,13 @@ angular.module('proposalTool.controllers', [])
 
         $scope.contact = SessionService.getCurrentContact();
     }])
-    .controller('NewProposalController'), ['$scope'], function($scope) {
-
-
-}
-    .controller('proposalResults'), ['$scope', proposalCalc], function($scope, proposalCalc) {
-    fubction
-    run the ProposalCalc(with a user parameter){}
-        returns result of proposalCalc
-    };
-
-}
+//    .controller('NewProposalController'), ['$scope'], function($scope) {
+//
+//
+//}
+//    .controller('proposalResults'), ['$scope', proposalCalc], function($scope, proposalCalc) {
+//
+//}
     .controller('AddContactController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
         $scope.contact = {}
 

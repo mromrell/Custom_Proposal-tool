@@ -114,6 +114,17 @@ angular.module('addressBookApp.controllers', [])
 
         $scope.contact = SessionService.getCurrentContact();
     }])
+    .controller('NewProposalController'), ['$scope'], function($scope) {
+
+
+}
+    .controller('proposalResults'), ['$scope', proposalCalc], function($scope, proposalCalc) {
+    fubction
+    run the ProposalCalc(with a user parameter){}
+        returns result of proposalCalc
+    };
+
+}
     .controller('AddContactController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
         $scope.contact = {}
 
@@ -145,3 +156,4 @@ angular.module('addressBookApp.controllers', [])
         $scope.contactTitle = contactConstants['title'];
         $scope.contactSubTitle = contactConstants['subTitle'];
     }]);
+

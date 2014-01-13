@@ -7,3 +7,5 @@ module.exports = function (req, res, next) {
         next();
     }
 };
+
+// the req res and next are passport-declared functions

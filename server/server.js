@@ -18,12 +18,13 @@ var auth = require('./services/auth');
     App Configuration Section
  */
 var app = module.exports = express(); // Creates our app with express support
+//the app.configure function essentially is configuring pasport insde of  function for future reference
 app.configure(function() {
     /*
     ** Session setup and passport initialization
      */
     app.use(express.cookieParser());
-    app.use(express.session( { secret: 'securedsession' }));
+    app.use(express.session( { secret: 'securedsession' })); //todo: find out about the securedsession
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -48,6 +49,8 @@ app.configure(function() {
         This handles static files (e.g. css, js, img, etc.).
      */
     app.use(express.static(__dirname + '/../public'));
+    //dirname is returned from Node. It is built in.
+    // the reference starts at the directory behind where we are.
 
     /*
         This explicitly handles route requests from the browser.  For example, http://localhost:3000/about will
@@ -70,7 +73,7 @@ app.configure(function() {
         app.use(express.errorHandler());
         // We can put more 'development' specific things here as well...
     }
-})
+}) //specifies what is to be done in terms of error hand in development mode vs otherwise
 
 /*
 ** Routes

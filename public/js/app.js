@@ -94,6 +94,20 @@ angular.module('addressBookApp', [
                     loggedin: checkLoggedin
                 }
             }).
+            when('/addProposal', {
+                templateUrl: 'partials/addProposal',
+                controller: 'AddProposalController',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            }).
+            when('/ExampleProposal', {
+                templateUrl: 'partials/ExampleProposal',
+                controller: 'ExampleProposalController',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            }).
             otherwise({
                 redirectTo: '/'
             });

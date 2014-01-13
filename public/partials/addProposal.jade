@@ -1,0 +1,29 @@
+div.starter-template
+    div#messages(ng-show="errorMessage") {{ errorMessage }}
+
+    p HEY YOU! don't forget to finish setting up the Controller for this page (That's why you see errors)
+
+    h1 {{ contactTitle }}
+    p.lead {{ contactSubTitle }}
+    form.form-register(role='form', name='contactForm', ng-submit='addContact()', style='max-width: 300px;', ng-disabled='disabled')
+        .form-group
+            input.form-control(type='text', name='first_name', ng-model='contact.first_name', placeholder='First name', required)
+            span(ng-show="hasError('first_name')") First name is required
+            span(ng-show="errorFirstName") {{ errorFirstName }}
+        .form-group
+            input.form-control(type='text', name='last_name', ng-model='contact.last_name', placeholder='Last name', required)
+            span(ng-show="hasError('last_name')") Last name is required
+            span(ng-show="errorLastName") {{ errorLastName }}
+        .form-group
+            input.form-control(type='text', name='email', ng-model='contact.email', placeholder='Email Address', required)
+            span(ng-show="hasError('email')") Email is required
+            span(ng-show="errorEmail") {{ errorEmail }}
+        button.btn.btn-default(type='submit') Create Contact
+        &nbsp;
+        a(href='/')
+            button.btn.btn-primary(type="button") Cancel
+
+
+
+//   Created by mromrell on 1/13/14.
+

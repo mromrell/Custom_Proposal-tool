@@ -70,6 +70,13 @@ angular.module('addressBookApp.controllers', [])
     .controller('IndexController', ['$scope', '$http', function($scope, $http) {
 
     }])
+    .controller('ExampleProposalController', ['$scope', function($scope) {
+        var exProp=[{
+            'id':'1',
+            'title':'Custom Website Cost'
+
+        }]
+    }])
     .controller('RegisterController', ['$scope', '$window', 'registerConstants', 'Restangular', 'SessionService', function($scope, $window, registerConstants, Restangular, SessionService) {
         $scope.user = {}
 
@@ -121,6 +128,38 @@ angular.module('addressBookApp.controllers', [])
 //    .controller('proposalResults'), ['$scope', proposalCalc], function($scope, proposalCalc) {
 //
 //}
+    .controller('AddProposalController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
+        $scope.contact = {}
+
+        $scope.addquestion = function() {
+            var question = {
+                'question_name': $scope.question.first_name,
+                'last_name': $scope.question.last_name,
+                'email': $scope.question.email,
+                'created': new Date()
+            };
+
+            Restangular.all('api/question').customPOST(question)
+                .then(function(data) {
+                    SessionService.saveCurrentquestion(data.question);
+                    $window.location = '/questions';
+                }), function(response) {
+                    $scope.errorMessage = response;
+                };
+        };
+
+        $scope.hasError = function (field, validation) {
+            if (validation) {
+                return $scope.questionForm[field].$dirty && $scope.questionForm[field].$error[validation];
+            }
+
+            return $scope.questionForm[field].$dirty && $scope.questionForm[field].$invalid;
+        };
+
+        $scope.questionTitle = questionConstants['title'];
+        $scope.questionSubTitle = questionConstants['subTitle'];
+    }])
+
     .controller('AddContactController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
         $scope.contact = {}
 

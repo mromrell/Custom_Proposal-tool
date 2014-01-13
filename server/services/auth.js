@@ -7,3 +7,5 @@ module.exports = function (req, res, next) { // Express framework already create
         next();          // if authenticated, then pass them through to wherever they were trying to go
     }
 };
+
+// the req res and next are passport-declared functions

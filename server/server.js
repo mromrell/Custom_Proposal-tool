@@ -17,6 +17,7 @@ var auth = require('./services/auth'); // declares the auth service
 /*
     App Configuration Section
  */
+
 var app = module.exports = express(); // Creates our app with Express support
 app.configure(function() {            // this is where we say: Here are all of our configurations
     /*
@@ -48,18 +49,20 @@ app.configure(function() {            // this is where we say: Here are all of o
     /*
         This handles static files (e.g. css, js, img, etc.).
      */
+
     app.use(express.static(__dirname + '/../public')); // __dirname returns the current working directory. This is a built in node thing
+    //dirname is returned from Node. It is built in.
+    // the reference starts at the directory behind where we are.
 
     /*
         This explicitly handles route requests from the browser.  For example, http://localhost:3000/about will
         try and locate a route ( app.get('/about...) ) that matches.
      */
     app.use(app.router);  // app.router is an Express command
-    app.set('port', process.env.PORT || 3000); // Sets the port based on the environment or to 3000
-    app.set('views', __dirname + '/../public'); // Jade views will be found under public (also under partials)
+  ss.env.PORT ||t('views', __dirname + '/../public'); // Jade views will be found under public (also under partials)
     app.set('view engine', 'jade'); // Jade will be our view engine
 
-    app.use(express.logger('dev')); // log every request to the console, only if we are in Dev Mode
+    app.use(express.logger('dev')); // log every request to the console, only if we aren Dev Mode
 
     /*
         errorHandler() - http://www.senchalabs.org/connect/errorHandler.html
@@ -70,7 +73,9 @@ app.configure(function() {            // this is where we say: Here are all of o
         app.use(express.errorHandler());
         // We can put more 'development' specific things here as well...
     }
+
 })  // End of Configure Block
+
 
 /*
 ** Routes: Put the most specific routes on top and the least specific on bottom.

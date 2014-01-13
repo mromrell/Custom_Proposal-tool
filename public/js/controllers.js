@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('addressBookApp.controllers', [])
+angular.module('proposalTool.controllers', [])
     .controller('BaseController', ['$scope', '$location', '$window', 'Restangular', 'SessionService', function($scope, $location, $window, Restangular, SessionService) {
         $scope.userSession = SessionService.getUserSession();
 

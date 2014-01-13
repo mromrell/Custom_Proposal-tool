@@ -2,14 +2,14 @@
 
 // Declare app level module which depends on filters, and services
 
-angular.module('addressBookApp', [
+angular.module('proposalTool', [
         'ngRoute',
         'restangular',
-        'addressBookApp.constants',
-        'addressBookApp.controllers',
-        'addressBookApp.filters',
-        'addressBookApp.services',
-        'addressBookApp.directives'
+        'proposalTool.constants',
+        'proposalTool.controllers',
+        'proposalTool.filters',
+        'proposalTool.services',
+        'proposalTool.directives'
     ]).
     config(['$routeProvider', '$locationProvider', 'RestangularProvider', '$httpProvider', function ($routeProvider, $locationProvider, RestangularProvider, $httpProvider) {
         var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope, SessionService) {

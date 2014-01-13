@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('addressBookApp.constants', [])
+angular.module('proposalTool.constants', [])
     .constant('loginTitle', 'Please sign in')
     .constant('registerConstants', {
         'title': 'Account registration',

@@ -104,9 +104,9 @@ angular.module('proposalTool', [
             when('/exampleProposal', {
                 templateUrl: 'partials/exampleProposal',
                 controller: 'ExampleProposalController',
-                resolve: {
-                    loggedin: checkLoggedin
-                }
+                radio: 'partials/templates/radio',
+                textbox: 'partials/templates/textbox',
+
             }).
             otherwise({
                 redirectTo: '/'

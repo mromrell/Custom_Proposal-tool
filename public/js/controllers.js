@@ -71,62 +71,83 @@ angular.module('proposalTool.controllers', [])
 
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
+        $scope.checker = function (text){
+            return text
+        };
+
+
+        $scope.total = function(value){
+//            grandTotal = 0;
+//            $scope.add = function(value){
+//                value = parseInt(value);
+//                grandTotal += value;
+//            };
+            return value;
+        };
+
+
         $scope.proposal = {
             'id':'1',
             'title':'Custom Website Cost',
-            'description':'This is an Example Proposal that should give you the price wio build a new website',
+            'description':'This is an Example Proposal that should give you the price to build a new website',
             'questions':{
                 'q1':{
                     'qId':'1',
-                    'title':'What is your Favorite Color?',
+                    'type':'radio',
+                    'title':'How many pages will your site have?',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':'Yellow',
-                            'optionValue':"300"
+                            'optionChoice':'10',
+                            'optionValue':"400"
                         },
                         'opt2':{
-                            'optionChoice':'Green',
-                            'optionValue':"50"
+                            'optionChoice':'20',
+                            'optionValue':"800"
                         },
                         'opt3':{
-                            'optionChoice':'Blue',
-                            'optionValue':"120"
+                            'optionChoice':'30',
+                            'optionValue':"1200"
                         }
                     }
-                    //end question
-                },
+                },  //end question
                 'q2':{
                     'qId':'2',
-                    'title':'Who is Bill Clinton?',
+                    'type':'radio',
+                    'title':'Fully Custom or Templated',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':'A Democrat',
-                            'optionValue':"300"
+                            'optionChoice':"I want it Fully Custom",
+                            'optionValue':"1000"
                         },
                         'opt2':{
-                            'optionChoice':'A Jazz Saxaphonist',
-                            'optionValue':"120"
+                            'optionChoice': "I'll Choose a template",
+                            'optionValue':"500"
                         }
-                    },
-                    'qOption1':'A Democrat',
-                    'qOption2':'A Saxophone player'
-                },
+                    }
+                },  //end question
                 'q3':{
                     'qId':'3',
-                    'title':'How many pages do you want?',
+                    'type':'text',
+                    'title':'How many photo galleries will you have?',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':'A Democrat',
-                            'optionValue':"300"
+                            'optionChoice':"0",
+                            'optionValue':"0"
                         },
                         'opt2':{
-                            'optionChoice':'A Jazz Saxaphonist',
-                            'optionValue':"120"
+                            'optionChoice': "2",
+                            'optionValue':"200"
+                        },
+                        'opt3':{
+                            'optionChoice':"4",
+                            'optionValue':"400"
+                        },
+                        'opt4':{
+                            'optionChoice': "8",
+                            'optionValue':"800"
                         }
-                    },
-                    'qOption1':'A Democrat',
-                    'qOption2':'A Saxophone player'
-                }
+                    }
+                } //end question
             }
 
         }

@@ -59,7 +59,9 @@ app.configure(function() {            // this is where we say: Here are all of o
         try and locate a route ( app.get('/about...) ) that matches.
      */
     app.use(app.router);  // app.router is an Express command
-  ss.env.PORT ||t('views', __dirname + '/../public'); // Jade views will be found under public (also under partials)
+
+    app.set('port', process.env.PORT || 3000); // Sets the port based on the environment or to 3000
+    app.set('views', __dirname + '/../public'); // Jade views will be found under public (also under partials)
     app.set('view engine', 'jade'); // Jade will be our view engine
 
     app.use(express.logger('dev')); // log every request to the console, only if we aren Dev Mode

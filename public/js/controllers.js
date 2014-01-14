@@ -224,7 +224,7 @@ angular.module('proposalTool.controllers', [])
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);
-                    $window.location = '/proposals';
+                    $window.location = '/proposalList';
                 }), function(response) {
                     $scope.errorMessage = response;
                 };

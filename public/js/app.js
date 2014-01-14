@@ -50,7 +50,7 @@ angular.module('proposalTool', [
                     function (response) {
                         console.log('Response: ' + JSON.stringify(response));
                         console.log('URL: ' + response.config.url + ' and ' + response.config.data.email);
-                        if (response.config.method = 'POST' && response.config.url.indexOf('login') != -1) {
+                        if (response.config.method == 'POST' && response.config.url.indexOf('login') != -1) {
                             return response;
                         } else {
                             if (response.status == 401) {
@@ -118,7 +118,7 @@ angular.module('proposalTool', [
     .run(['$rootScope', '$location', 'SessionService', function ($rootScope, $location, SessionService) {
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
             if (!SessionService.isUserLoggedIn()) {
-                if (next.originalPath != '/register') {
+                if (next.originalPath != ('/register' || '/recover')) {
                     $location.path('/');
                 }
             } else {

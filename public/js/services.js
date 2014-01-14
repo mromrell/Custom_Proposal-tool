@@ -1,7 +1,7 @@
 'use strict';
 
 /* Services */
-angular.module('addressBookApp.services', ['angularLocalStorage'])
+angular.module('proposalTool.services', ['angularLocalStorage'])
     .factory('SessionService', function($http, storage) {
         return {
             saveUserSession: function(data) {

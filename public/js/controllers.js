@@ -78,13 +78,21 @@ angular.module('proposalTool.controllers', [])
             return text
         };
 
+
+        $scope.myTotal = 500;
+        $scope.quote = function(choices) {
+            choices = parseInt(choices);
+            $scope.myTotal += choices;
+
+            return $scope.myTotal;
+        }
+        $scope.grandTotal = 5000;
         $scope.total = function(value){
-//            grandTotal = 0;
-//            $scope.add = function(value){
-//                value = parseInt(value);
-//                grandTotal += value;
-//            };
-            return value;
+
+            value = parseInt(value);
+            $scope.grandTotal += value;
+
+            return $scope.grandTotal;
         };
 
 

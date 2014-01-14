@@ -69,6 +69,13 @@ angular.module('proposalTool', [
                 templateUrl: 'partials/login',
                 controller: 'LoginController'
             }).
+            when('/proposalList', {
+                templateUrl: 'partials/proposalList',
+                controller: 'ProposalListController',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            }).
             when('/home', {
                 templateUrl: 'partials/index',
                 controller: 'IndexController',

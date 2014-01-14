@@ -199,13 +199,17 @@ angular.module('proposalTool.controllers', [])
 
         $scope.contact = SessionService.getCurrentContact();
     }])
-//    .controller('NewProposalController'), ['$scope'], function($scope) {
-//
-//
-//}
-//    .controller('proposalResults'), ['$scope', proposalCalc], function($scope, proposalCalc) {
-//
-//}
+    .controller('ProposalListController', ['$scope', 'Restangular', 'SessionService', function($scope, Restangular, SessionService) {
+        Restangular.all('api/contacts').customGET()
+            .then(function(data) {
+                $scope.contacts = data.contacts;
+            }), function(response) {
+                console.log("Error retrieving contacts: " + response);
+            };
+
+        $scope.contact = SessionService.getCurrentContact();
+    }])
+
     .controller('AddProposalController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
         $scope.contact = {}
 

@@ -1,0 +1,11 @@
+div.starter-template
+    p This is the dashboard (PROPOSALSSSS!!!)
+    p soon, You'll see a list of proposals that you've created
+    br
+    p There are {{contacts.length}} proposals in the System
+    div(ng-repeat='contact in contacts')
+        h3 {{contact.name}}
+        div {{contact.description}}
+        a(href='editContact/{{contact._id}}') Edit
+        | -
+        a(href='deleteContact/{{contact._id}}') Delete

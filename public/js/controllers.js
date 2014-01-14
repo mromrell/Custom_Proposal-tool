@@ -71,11 +71,50 @@ angular.module('addressBookApp.controllers', [])
 
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
-        var exProp=[{
+        $scope.proposal = {
             'id':'1',
-            'title':'Custom Website Cost'
+            'title':'Custom Website Cost',
+            'description':'This is an Example Proposal that should give you the price wio build a new website',
+            'questions':{
+                'q1':{
+                    'qId':'1',
+                    'title':'What is your Favorite Color?',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':'Yellow',
+                            'optionValue':"300"
+                        },
+                        'opt2':{
+                            'optionChoice':'Green',
+                            'optionValue':"50"
+                        },
+                        'opt3':{
+                            'optionChoice':'Blue',
+                            'optionValue':"120"
+                        }
+                    }
+                    //end question
+                },
+                'q2':{
+                    'qId':'2',
+                    'title':'Who is Bill Clinton?',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':'A Democrat',
+                            'optionValue':"300"
+                        },
+                        'opt2':{
+                            'optionChoice':'A Jazz Saxaphonist',
+                            'optionValue':"120"
+                        }
+                    },
+                    'qOption1':'A Democrat',
+                    'qOption2':'A Saxophone player'
+                }
+            }
 
-        }]
+        }
+
     }])
     .controller('RegisterController', ['$scope', '$window', 'registerConstants', 'Restangular', 'SessionService', function($scope, $window, registerConstants, Restangular, SessionService) {
         $scope.user = {}

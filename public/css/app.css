@@ -116,3 +116,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .form-register input.ng-valid.ng-dirty {
     background-color: #78FA89;
 }
+.no-decoration{
+    list-style: none;
+    display: inline;
+}

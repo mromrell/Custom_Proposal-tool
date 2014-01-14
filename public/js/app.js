@@ -125,7 +125,7 @@ angular.module('proposalTool', [
     .run(['$rootScope', '$location', 'SessionService', function ($rootScope, $location, SessionService) {
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
             if (!SessionService.isUserLoggedIn()) {
-                if (next.originalPath != ('/register' || '/recover')) {
+                if (next.originalPath != ('/register' || '/recover' || '/exampleProposal' )) {
                     $location.path('/');
                 }
             } else {

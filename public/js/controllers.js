@@ -218,21 +218,21 @@ angular.module('proposalTool.controllers', [])
         $scope.contact = SessionService.getCurrentContact();
     }])
 
-    .controller('AddProposalController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
-        $scope.contact = {}
+    .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
+        $scope.proposal = {}
 
-        $scope.addquestion = function() {
-            var question = {
-                'question_name': $scope.question.first_name,
-                'last_name': $scope.question.last_name,
-                'email': $scope.question.email,
+        $scope.addProposal = function() {
+            var proposal = {
+                'proposal_name': $scope.proposal.proposal_name,
+                'description': $scope.proposal.description,
+                'email': $scope.proposal.email,
                 'created': new Date()
             };
 
-            Restangular.all('api/question').customPOST(question)
+            Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
-                    SessionService.saveCurrentquestion(data.question);
-                    $window.location = '/questions';
+                    SessionService.saveCurrentProposal(data.proposal);
+                    $window.location = '/proposalList';
                 }), function(response) {
                     $scope.errorMessage = response;
                 };
@@ -240,14 +240,14 @@ angular.module('proposalTool.controllers', [])
 
         $scope.hasError = function (field, validation) {
             if (validation) {
-                return $scope.questionForm[field].$dirty && $scope.questionForm[field].$error[validation];
+                return $scope.proposalForm[field].$dirty && $scope.proposalForm[field].$error[validation];
             }
 
-            return $scope.questionForm[field].$dirty && $scope.questionForm[field].$invalid;
+            return $scope.proposalForm[field].$dirty && $scope.proposalForm[field].$invalid;
         };
 
-        $scope.questionTitle = questionConstants['title'];
-        $scope.questionSubTitle = questionConstants['subTitle'];
+        $scope.proposalTitle = proposalConstants['title'];
+        $scope.proposalSubTitle = proposalConstants['subTitle'];
     }])
 
     .controller('AddContactController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {

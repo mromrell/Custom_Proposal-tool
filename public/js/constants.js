@@ -9,4 +9,8 @@ angular.module('proposalTool.constants', [])
     .constant('contactConstants', {
         'title': 'Create contact',
         'subTitle': 'Create a new contact.'
-    });
+    })
+    .constant('proposalConstants', {
+        'title': 'Create Proposal',
+        'subTitle': 'Create a new Proposal Questionaire.'
+    });;

@@ -3,6 +3,7 @@
  */
 
 var Contact = require('../models/contact.js');
+var Proposal = require('../models/proposal.js');
 
 /*
 ** GET requests
@@ -49,8 +50,6 @@ module.exports.addContact = function (req, res) {
         });
     });
 };
-
-////////////////////
 
 module.exports.addProposal = function (req, res) {
     // Create a proposal in database

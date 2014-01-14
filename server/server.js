@@ -84,6 +84,7 @@ app.configure(function() {            // this is where we say: Here are all of o
  */
 require('./routes/account')(app, passport, require('./controllers/account'));
 require('./routes/contact')(app, auth, require('./controllers/contact'));
+require('./routes/proposal')(app, auth, require('./controllers/proposal'));
 require('./routes/index')(app, require('./controllers/index'));
 
 // Let's create the server and listen on the port defined in the configuration above

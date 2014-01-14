@@ -1,11 +1,11 @@
 div.starter-template
     div#messages(ng-show="errorMessage") {{ errorMessage }}
 
-    h1 {{ Your Project }}
-    p.lead {{ Pick your settings and features, and we can provide a quote for you. }}
-    form.form-register(role='form', name='quoteEntryForm', ng-submit='addContact()', style='max-width: 300px;', ng-disabled='disabled')
+    h1 {{ contactTitle }}
+    p.lead {{ contactSubTitle }}
+    form.form-register(role='form', name='contactForm', ng-submit='addContact()', style='max-width: 300px;', ng-disabled='disabled')
         .form-group
-            input.form-control(type='text', name='first_name', ng-model='contact.first_name', placeholder='Firs', required)
+            input.form-control(type='text', name='first_name', ng-model='contact.first_name', placeholder='First name', required)
             span(ng-show="hasError('first_name')") First name is required
             span(ng-show="errorFirstName") {{ errorFirstName }}
         .form-group

@@ -67,14 +67,16 @@ angular.module('proposalTool.controllers', [])
 
         $scope.loginTitle = loginTitle;
     }])
-    .controller('IndexController', ['$scope', '$http', function($scope, $http) {
+    .controller('IndexController', ['$scope', function($scope) {
+
+    }])
+    .controller('TestController', ['$scope', function($scope) {
 
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
-        $scope.checker = function (text){
+        $scope.typeChecker = function (text){
             return text
         };
-
 
         $scope.total = function(value){
 //            grandTotal = 0;
@@ -93,7 +95,7 @@ angular.module('proposalTool.controllers', [])
             'questions':{
                 'q1':{
                     'qId':'1',
-                    'type':'radio',
+                    'qTemplate':'partials/qTemplate-radio',
                     'title':'How many pages will your site have?',
                     'qOptions': {
                         'opt1':{
@@ -112,7 +114,7 @@ angular.module('proposalTool.controllers', [])
                 },  //end question
                 'q2':{
                     'qId':'2',
-                    'type':'radio',
+                    'qTemplate':'partials/qTemplate-radio',
                     'title':'Fully Custom or Templated',
                     'qOptions': {
                         'opt1':{
@@ -127,7 +129,7 @@ angular.module('proposalTool.controllers', [])
                 },  //end question
                 'q3':{
                     'qId':'3',
-                    'type':'text',
+                    'qTemplate':'partials/qTemplate-textbox',
                     'title':'How many photo galleries will you have?',
                     'qOptions': {
                         'opt1':{

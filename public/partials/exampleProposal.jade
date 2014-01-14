@@ -6,17 +6,15 @@ div.starter-template
     p {{checker("Its kind of working!")}} // Testing to retrieve data from functions in the controller
 
     //ng-include='\'{{question.type}}'\')
-    //ng-include(src='\'radio\'')
-    //ng-include(src='\'contacts\'')  // this one is Supposed to be right
 
 
     br
     form(name="{{proposal.title}}", action="/templates/proposalResults", method="post")
         div(ng-repeat='question in proposal.questions')
             h3 {{question.title}}
-            ul(ng-repeat='option in question.qOptions')
-                li.no-decoration: input(type='radio', name='{{question.qId}}', value='{{option.optionValue}}', ng-click='add({{option.optionValue}})')span  {{option.optionChoice}}
-                // ng-click='updateTotal({{option.optionValue}})'
+            p {{question.type}}
+            ng-include(src="question.qTemplate")
+
 
             br
 

@@ -110,6 +110,22 @@ angular.module('addressBookApp.controllers', [])
                     },
                     'qOption1':'A Democrat',
                     'qOption2':'A Saxophone player'
+                },
+                'q3':{
+                    'qId':'3',
+                    'title':'How many pages do you want?',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':'A Democrat',
+                            'optionValue':"300"
+                        },
+                        'opt2':{
+                            'optionChoice':'A Jazz Saxaphonist',
+                            'optionValue':"120"
+                        }
+                    },
+                    'qOption1':'A Democrat',
+                    'qOption2':'A Saxophone player'
                 }
             }
 

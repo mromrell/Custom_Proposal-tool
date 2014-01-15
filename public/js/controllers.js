@@ -71,28 +71,26 @@ angular.module('proposalTool.controllers', [])
 
     }])
     .controller('TestController', ['$scope', function($scope) {
-
+//        $scope.grandTotal = 2;
+//        $scope.total = function(value){
+//
+//            //value = parseInt(value);
+//            $scope.grandTotal += value;
+//
+//            return $scope.grandTotal;
+//        };
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
-        $scope.typeChecker = function (text){
-            return text
-        };
 
-
-        $scope.myTotal = 500;
-        $scope.quote = function(choices) {
-            choices = parseInt(choices);
-            $scope.myTotal += choices;
-
-            return $scope.myTotal;
-        }
-        $scope.grandTotal = 5000;
-        $scope.total = function(value){
-
-            value = parseInt(value);
+        $scope.grandTotal= 0;
+        $scope.proposalAnswers = {};
+        $scope.total = function(answerName, value){
+//            var answer = {};
+//            answer[answerName]=value;
+//            $scope.proposalAnswers.push(answer);
             $scope.grandTotal += value;
-
-            return $scope.grandTotal;
+            console.log("The granTotal is: " + $scope.grandTotal)
+           // console.log($scope.proposalAnswers)
         };
 
 
@@ -218,7 +216,6 @@ angular.module('proposalTool.controllers', [])
         $scope.proposal = SessionService.getCurrentProposal();
         $scope.currentUserInfo = SessionService.getUserSession();
     }])
-
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {}
 
@@ -268,7 +265,6 @@ angular.module('proposalTool.controllers', [])
         $scope.proposalTitle = proposalConstants['title'];
         $scope.proposalSubTitle = proposalConstants['subTitle'];
     }])
-
     .controller('AddContactController', ['$scope', '$window', 'contactConstants', 'Restangular', 'SessionService', function($scope, $window, contactConstants, Restangular, SessionService) {
         $scope.contact = {}
 

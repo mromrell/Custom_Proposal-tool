@@ -120,3 +120,9 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     list-style: none;
     display: inline;
 }
+.propHeader{
+    color:#337fc7;
+}
+.propSubHeader{
+    color:#8e8e8e;
+}

@@ -71,26 +71,28 @@ angular.module('proposalTool.controllers', [])
 
     }])
     .controller('TestController', ['$scope', function($scope) {
-//        $scope.grandTotal = 2;
-//        $scope.total = function(value){
-//
-//            //value = parseInt(value);
-//            $scope.grandTotal += value;
-//
-//            return $scope.grandTotal;
-//        };
+
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
+        $scope.typeChecker = function (text){
+            return text
+        };
 
-        $scope.grandTotal= 0;
-        $scope.proposalAnswers = {};
-        $scope.total = function(answerName, value){
-//            var answer = {};
-//            answer[answerName]=value;
-//            $scope.proposalAnswers.push(answer);
+
+        $scope.myTotal = 500;
+        $scope.quote = function(choices) {
+            choices = parseInt(choices);
+            $scope.myTotal += choices;
+
+            return $scope.myTotal;
+        }
+        $scope.grandTotal = 5000;
+        $scope.total = function(value){
+
+            value = parseInt(value);
             $scope.grandTotal += value;
-            console.log("The granTotal is: " + $scope.grandTotal)
-           // console.log($scope.proposalAnswers)
+
+            return $scope.grandTotal;
         };
 
 
@@ -216,6 +218,7 @@ angular.module('proposalTool.controllers', [])
         $scope.proposal = SessionService.getCurrentProposal();
         $scope.currentUserInfo = SessionService.getUserSession();
     }])
+
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {}
 
@@ -226,20 +229,6 @@ angular.module('proposalTool.controllers', [])
                 'email': $scope.proposal.email,
                 'created': new Date()
             };
-        }
-             // Add the proposal ID to the Users list of proposals ----------------------------
-
-            $scope.addContact = function() {
-            var contact = {
-                'first_name': $scope.contact.first_name,
-                'last_name': $scope.contact.last_name,
-                'email': $scope.contact.email,
-                'created': new Date()
-                //proposalid
-            };
-
-            // END: Add the proposal ID to the Users list of proposals ----------------------------
-
 
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
@@ -249,10 +238,6 @@ angular.module('proposalTool.controllers', [])
                     $scope.errorMessage = response;
                 };
         };
-
-
-
-
 
         $scope.hasError = function (field, validation) {
             if (validation) {

@@ -31,3 +31,5 @@ angular.module('proposalTool.services', ['angularLocalStorage'])
         };
     })
     .value('version', '0.1');
+
+

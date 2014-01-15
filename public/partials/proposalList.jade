@@ -1,9 +1,12 @@
 div.starter-template
-    h1 Welcome to your dashboard
-    p soon, You'll see a list of proposals that you've created
+    h1 Hi, {{ currentUserInfo.first_name }}.
+    p This page provides a directory of all of your proposals.
     br
 
-    h4 How many Proposals are there?
+    h4 You currently have {{ currentUserInfo.completedProposals.length }} completed proposals.
+    h4 You currently have {{ }} proposals that aren't yet completed.
+
+    h4 Click a proposal to alter or delete it.
     p There are: {{proposals.length}} proposals in the System
     div(ng-repeat='proposal in proposals')
         h3 {{proposal.name}}

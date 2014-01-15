@@ -13,7 +13,7 @@ html(ng-app="proposalTool", ng-controller="BaseController")
                     button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href='/') Proposal Tool Project
+                    a.navbar-brand(href='/') Proposal Tool
                 .collapse.navbar-collapse
                     ul.nav.navbar-nav
                         li(ng-class='{active:isActive("/exampleProposal")}')
@@ -24,17 +24,18 @@ html(ng-app="proposalTool", ng-controller="BaseController")
                         //            li
                         //                a(href='/addProposal') Add Proposal
                         li(class='dropdown', ng-class='{active:isActive(["/proposalList", "other"])}', logged-in)
-                            a(href='/proposalList', class='dropdown-toggle') Proposals
+                            a(href='/proposalList', class='dropdown-toggle') My Proposals
                                 ul(class='dropdown-menu')
                                     li
                                         a(href='/addProposal') Add Proposal
+                                        a(href='/editProposal') Edit Proposal
                         li(ng-class='{active:isActive("/")}', logged-out)
                             a(href='/') Login
-                        li(class='dropdown', ng-class='{active:isActive(["/contacts", "other"])}', logged-in)
-                            a(href='/contacts', class='dropdown-toggle') Contacts
-                                ul(class='dropdown-menu')
-                                    li
-                                        a(href='/addContact') Add Contact
+                        //li(class='dropdown', ng-class='{active:isActive(["/contacts", "other"])}', logged-in)
+                        //    a(href='/contacts', class='dropdown-toggle') Contacts
+                        //        ul(class='dropdown-menu')
+                        //            li
+                        //                a(href='/addContact') Add Contact
                         li(class='dropdown', ng-class='{active:isActive(["/myAccount", "other"])}', logged-in)
                             a(href='/myAccount', class='dropdown-toggle') My Account
                                 ul(class='dropdown-menu')

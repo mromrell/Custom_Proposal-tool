@@ -217,7 +217,6 @@ angular.module('proposalTool.controllers', [])
 
         $scope.proposal = SessionService.getCurrentProposal();
         $scope.currentUserInfo = SessionService.getUserSession();
-        $scope.
     }])
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
@@ -230,6 +229,20 @@ angular.module('proposalTool.controllers', [])
                 'email': $scope.proposal.email,
                 'created': new Date()
             };
+        }
+             // Add the proposal ID to the Users list of proposals ----------------------------
+
+            $scope.addContact = function() {
+            var contact = {
+                'first_name': $scope.contact.first_name,
+                'last_name': $scope.contact.last_name,
+                'email': $scope.contact.email,
+                'created': new Date()
+                //proposalid
+            };
+
+            // END: Add the proposal ID to the Users list of proposals ----------------------------
+
 
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
@@ -239,6 +252,10 @@ angular.module('proposalTool.controllers', [])
                     $scope.errorMessage = response;
                 };
         };
+
+
+
+
 
         $scope.hasError = function (field, validation) {
             if (validation) {

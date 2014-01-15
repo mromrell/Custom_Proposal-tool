@@ -14,11 +14,13 @@ div.starter-template
     br
     br
 
-    h4 How many Contacts are there?
-    p There are {{contacts.length}} contacts in the System
-    div(ng-repeat='contact in contacts')
-        h3 {{contact.name}}
-        div {{contact.description}}
-        a(href='editContact/{{contact._id}}') Edit
-        | -
-        a(href='deleteContact/{{contact._id}}') Delete
+    // ng-include(src='\'partials/contacts\'')   //Testing why the Loops aren't working
+    div(ng-controller="ContactController")
+        h4 How many Contacts are there?
+        p There are {{contacts.length}} contacts in the System
+        div(ng-repeat='contact in contacts')
+            h3 {{contact.name}}
+            div {{contact.description}}
+            a(href='editContact/{{contact._id}}') Edit
+            | -
+            a(href='deleteContact/{{contact._id}}') Delete

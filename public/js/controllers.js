@@ -208,7 +208,6 @@ angular.module('proposalTool.controllers', [])
         $scope.contact = SessionService.getCurrentContact();
     }])
     .controller('ProposalListController', ['$scope', 'Restangular', 'SessionService', function($scope, Restangular, SessionService) {
-        //  For the Proposal Count ------------------------------------------
         Restangular.all('api/proposals').customGET()
             .then(function(data) {
                 $scope.proposals = data.proposals;
@@ -217,17 +216,6 @@ angular.module('proposalTool.controllers', [])
             };
 
         $scope.proposal = SessionService.getCurrentProposal();
-
-
-        //  For the Contact Count ------------------------------------------
-        Restangular.all('api/contacts').customGET()
-            .then(function(data) {
-                $scope.contacts = data.contacts;
-            }), function(response) {
-                console.log("Error retrieving contacts: " + response);
-            };
-
-        $scope.contact = SessionService.getCurrentContact();
     }])
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {

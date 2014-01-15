@@ -1,14 +1,10 @@
 div.starter-template
-    h1 {{proposal.title}}
-    h4 {{proposal.description}}
+    h1.propHeader {{proposal.title}}
+    h4.propSubHeader {{proposal.description}}
     br
-    div(ng-controller=calc)
-        p Fill out the form below to get a price: {{quote(100)}}
-        p {{checker("Its kind of working!")}} // Testing to retrieve data from functions in the controller
-
-    //ng-include='\'{{question.type}}'\')
-
-
+    p Fill out the form below to get a price: {{grandTotal}}
+    //p stuff: {{value}}
+    br
     br
     form(name="{{proposal.title}}", action="/templates/proposalResults", method="post")
         div(ng-repeat='question in proposal.questions')
@@ -16,11 +12,3 @@ div.starter-template
             p {{question.type}}
             ng-include(src="question.qTemplate")
             br
-
-
-
-
-
-
-  //   Created by mromrell on 1/13/14.
-

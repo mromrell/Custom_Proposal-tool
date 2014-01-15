@@ -21,6 +21,12 @@ angular.module('proposalTool.services', ['angularLocalStorage'])
             },
             getCurrentContact: function() {
                 return storage.get('contact');
+            },
+            saveCurrentProposal: function(data) {
+                storage.set('proposal', data);
+            },
+            getCurrentProposal: function() {
+                return storage.get('proposal');
             }
         };
     })

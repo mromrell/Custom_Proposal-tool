@@ -1,2 +1,2 @@
 ul(ng-repeat='option in question.qOptions')
-    li.no-decoration: input(type='radio', name='{{question.qId}}', value='{{option.optionValue}}', ng-model='value', ng-change='total({{option.optionChoice}},{{option.optionValue}})')span  {{option.optionChoice}}
+    li.no-decoration: input(type='radio', name='{{question.qId}}', value='{{option.optionValue}}', ng-model='value', ng-change='total({{question.qId}},{{option.optionChoice}},{{option.optionValue}})')span  {{option.optionChoice}}

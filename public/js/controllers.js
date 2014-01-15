@@ -71,26 +71,48 @@ angular.module('proposalTool.controllers', [])
 
     }])
     .controller('TestController', ['$scope', function($scope) {
-//        $scope.grandTotal = 2;
-//        $scope.total = function(value){
-//
-//            //value = parseInt(value);
-//            $scope.grandTotal += value;
-//
-//            return $scope.grandTotal;
-//        };
+
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
 
         $scope.grandTotal= 0;
         $scope.proposalAnswers = {};
-        $scope.total = function(answerName, value){
-//            var answer = {};
-//            answer[answerName]=value;
-//            $scope.proposalAnswers.push(answer);
+        var answerList = [];                                        // Set an Empty Answer list
+
+        $scope.total = function(questionId, answerName, value){
+            var answer ={};                                         // Set an Empty Answer
+            if (answerList.length == 0){                            // if this is the first time you are choosing an answer, just fill it out
+                answer["questionId"] = questionId;                  // Sets up the Answer details in the Answer hash
+                answer["answerName"] = answerName;
+                answer["value"] = value;
+                answerList.push(answer);                            // Puts the Answer hash into the AnswerList
+            }
+            else{
+                var added = false;                                  // This should allow us to post in answers even if the answerList is Empty and this isn't the 2nd answer
+                for (var i= 0; i<answerList.length; i++ ){          // runs through the AnswerList to
+                    if (questionId == answerList[i].questionId){    // check if the answer has already been entered
+                        answerList[i].value=value;                  // If it has already been entered then update the values
+                        answerList[i].answerName=answerName;
+                        added = true;                               //Set the 'added' value to true.
+                    }
+                }
+                if (added = false){
+                    answer["questionId"] = questionId;
+                    answer["answerName"] = answerName;
+                    answer["value"] = value;
+                    answerList.push(answer);
+                }
+            }
+
+
+
+            console.log("The answerList is:");
+            console.log(answerList);
+
+            // This totals the value of the answers chosen
             $scope.grandTotal += value;
-            console.log("The granTotal is: " + $scope.grandTotal)
-           // console.log($scope.proposalAnswers)
+            console.log("The granTotal is: " + $scope.grandTotal);
+            console.log($scope.proposalAnswers);
         };
 
 

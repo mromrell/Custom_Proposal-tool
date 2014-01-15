@@ -215,7 +215,6 @@ angular.module('proposalTool.controllers', [])
 
         $scope.proposal = SessionService.getCurrentProposal();
         $scope.currentUserInfo = SessionService.getUserSession();
-        $scope.
     }])
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {}

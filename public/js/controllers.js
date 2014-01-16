@@ -241,6 +241,11 @@ angular.module('proposalTool.controllers', [])
     }])
 
     .controller('ProposalOptionsController', ['$scope', function($scope) {
+        $scope.submitProposalOptions = function() {
+            Restangular.one('api/proposals').customPOST()
+                .then(function(data) {
+                console.log(data);
+            })}
         $scope.typeChecker = function (text){
             return text
         };

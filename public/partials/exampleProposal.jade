@@ -6,9 +6,8 @@ div.starter-template
     //p stuff: {{value}}
     br
     br
-    form(name="{{proposal.title}}", action="/templates/proposalResults", method="post")
-        div(ng-repeat='question in proposal.questions')
-            h3 {{question.title}}
-            p {{question.type}}
-            ng-include(src="question.qTemplate")
-            br
+    div(ng-repeat='question in proposal.questions')
+        h3 {{question.title}}
+        p {{question.type}}
+        ng-include(src="question.qTemplate")
+        br

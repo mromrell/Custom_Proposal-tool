@@ -76,43 +76,50 @@ angular.module('proposalTool.controllers', [])
     .controller('ExampleProposalController', ['$scope', function($scope) {
 
         $scope.grandTotal= 0;
-        $scope.proposalAnswers = {};
-        var answerList = [];                                        // Set an Empty Answer list
+        var total = 0
+        var answerList = [];
 
-        $scope.total = function(questionId, answerName, value){
+        $scope.total = function(questionId, answerName, value){     // ---> Removed references to answerName because it was throwing a syntax error when answerName included letters
             var answer ={};                                         // Set an Empty Answer
             if (answerList.length == 0){                            // if this is the first time you are choosing an answer, just fill it out
-                answer["questionId"] = questionId;                  // Sets up the Answer details in the Answer hash
-                answer["answerName"] = answerName;
+                answer["questionId"] = questionId;
                 answer["value"] = value;
                 answerList.push(answer);                            // Puts the Answer hash into the AnswerList
+                $scope.grandTotal += answerList[0].value
             }
             else{
-                var added = false;                                  // This should allow us to post in answers even if the answerList is Empty and this isn't the 2nd answer
-                for (var i= 0; i<answerList.length; i++ ){          // runs through the AnswerList to
-                    if (questionId == answerList[i].questionId){    // check if the answer has already been entered
-                        answerList[i].value=value;                  // If it has already been entered then update the values
-                        answerList[i].answerName=answerName;
-                        added = true;                               //Set the 'added' value to true.
+                $scope.alreadyAnswered = false;
+                for (var i= 0; i<answerList.length; i++ ){
+                    if (questionId == answerList[i].questionId ){
+                        $scope.grandTotal -= answerList[i].value
+                        answerList[i].value=value;
+                        $scope.grandTotal += answerList[i].value
+                        $scope.alreadyAnswered = true;
                     }
                 }
-                if (added = false){
+                if ($scope.alreadyAnswered==false) {
                     answer["questionId"] = questionId;
-                    answer["answerName"] = answerName;
                     answer["value"] = value;
                     answerList.push(answer);
+                    $scope.grandTotal += value;
                 }
             }
 
-
-
-            console.log("The answerList is:");
+            //console.log("The answerList is:");
             console.log(answerList);
 
             // This totals the value of the answers chosen
-            $scope.grandTotal += value;
-            console.log("The granTotal is: " + $scope.grandTotal);
-            console.log($scope.proposalAnswers);
+            //$scope.grandTotal += value;
+
+
+//            for (var x = 0; x < answerList.length; x++ ){
+//                total += answerList[x].value;
+//            }
+//            $scope.grandTotal = total;
+
+
+
+
         };
 
 
@@ -127,15 +134,15 @@ angular.module('proposalTool.controllers', [])
                     'title':'How many pages will your site have?',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':'10',
+                            'optionChoice':'400',
                             'optionValue':"400"
                         },
                         'opt2':{
-                            'optionChoice':'20',
+                            'optionChoice':'800',
                             'optionValue':"800"
                         },
                         'opt3':{
-                            'optionChoice':'30',
+                            'optionChoice':'1200',
                             'optionValue':"1200"
                         }
                     }
@@ -146,18 +153,18 @@ angular.module('proposalTool.controllers', [])
                     'title':'Fully Custom or Templated',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':"I want it Fully Custom",
+                            'optionChoice':"1000",
                             'optionValue':"1000"
                         },
                         'opt2':{
-                            'optionChoice': "I'll Choose a template",
+                            'optionChoice': "500",
                             'optionValue':"500"
                         }
                     }
                 },  //end question
                 'q3':{
                     'qId':'3',
-                    'qTemplate':'partials/qTemplate-textbox',
+                    'qTemplate':'partials/qTemplate-radio',
                     'title':'How many photo galleries will you have?',
                     'qOptions': {
                         'opt1':{
@@ -165,18 +172,23 @@ angular.module('proposalTool.controllers', [])
                             'optionValue':"0"
                         },
                         'opt2':{
-                            'optionChoice': "2",
+                            'optionChoice': "200",
                             'optionValue':"200"
                         },
                         'opt3':{
-                            'optionChoice':"4",
+                            'optionChoice':"400",
                             'optionValue':"400"
                         },
                         'opt4':{
-                            'optionChoice': "8",
+                            'optionChoice': "800",
                             'optionValue':"800"
                         }
                     }
+                }, //end question
+                'q4':{
+                    'qId':'4',
+                    'qTemplate':'partials/qTemplate-textbox',
+                    'title':'How many photo galleries will you have?'
                 } //end question
             }
 

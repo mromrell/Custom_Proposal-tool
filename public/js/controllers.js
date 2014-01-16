@@ -336,6 +336,8 @@ angular.module('proposalTool.controllers', [])
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {}
+        $scope.qTemplateCreation='partials/qTemplate-radio';
+        //$scope.qTemplateCreation='partials/qTemplate-textbox';
 
         $scope.addProposal = function() {
             var proposal = {

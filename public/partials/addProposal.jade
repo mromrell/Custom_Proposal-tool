@@ -12,10 +12,6 @@ div.starter-template
             input.form-control(type='text', name='description', ng-model='proposal.description', placeholder='Description', required)
             span(ng-show="hasError('description')") Description is required
             span(ng-show="errorDescription") {{ errorDescription }}
-        .form-group
-            input.form-control(type='text', name='email', ng-model='proposal.email', placeholder='Email Address', required)
-            span(ng-show="hasError('email')") Email is required
-            span(ng-show="errorEmail") {{ errorEmail }}
         button.btn.btn-default(type='submit') Create Proposal
         &nbsp;
         a(href='/')

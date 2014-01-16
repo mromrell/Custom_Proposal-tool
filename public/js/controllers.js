@@ -226,7 +226,7 @@ angular.module('proposalTool.controllers', [])
             var proposal = {
                 'proposal_name': $scope.proposal.proposal_name,
                 'description': $scope.proposal.description,
-                'email': $scope.proposal.email,
+
                 'created': new Date()
             };
 

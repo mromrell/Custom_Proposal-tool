@@ -34,7 +34,6 @@ module.exports.addProposal = function (req, res) {
     var proposal = new Proposal ({
         'proposal_name': req.body.proposal_name,
         'description': req.body.description,
-        'email': req.body.email,
         'created': req.body.created
     });
 

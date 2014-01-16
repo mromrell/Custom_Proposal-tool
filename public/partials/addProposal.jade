@@ -22,16 +22,13 @@ div.starter-template
                 span(ng-show="errorProposalName") {{ errorProposalName }}
             .form-group
                 select.form-control.input-sm
-                    //add ng-change='' to these options
+                    //add ng-change='' to these options ng-model='optionType'
                     option(value='radio' ) Multiple Choice
-                    option(value='textbox' ) Text Box
-                hr
-                //ng-include(src="question.qTemplate")
-                input.form-control(type='text', name='questionOption', ng-model='proposal.questionOption', placeholder='Option 1', required)
-                input.form-control.input-sm(type='text', name='questionOptionValue', ng-model='proposal.questionOptionValue', placeholder='Option 1: Value', required)
-                br
-                //button.btn.btn-default(ng-click=(#)) Add Another Question
-                button.pull-right.btn.btn-default() Add an Option
+                    option(value='textbox'  ) Text Box
+            hr
+                //this section needs to be in a seperate view, and called in only if selected
+            ng-include(src="'partials/qTemplateCreation-radio'")
+
         br
         //button.btn.btn-default(ng-click=(#)) Add Another Question
         button.btn.btn-default() Add a Question

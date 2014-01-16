@@ -48,3 +48,23 @@ module.exports.addProposal = function (req, res) {
         });
     });
 };
+
+module.exports.addProposalOptions = function (req, res) {
+    // Create a proposal in database
+    var proposal = new Proposal ({
+        'proposal_name': req.body.proposal_name,
+        'description': req.body.description,
+        'created': req.body.created
+    });
+
+    proposal.save(function(err){
+        if (err) {
+            console.log('Error saving proposal: ' + err);
+            res.json({'error': 'addProposal'});
+        }
+
+        res.json({
+            proposal: proposal
+        });
+    });
+};

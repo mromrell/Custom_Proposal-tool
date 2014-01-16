@@ -339,6 +339,7 @@ angular.module('proposalTool.controllers', [])
                 'created': new Date()
             };
 
+
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);

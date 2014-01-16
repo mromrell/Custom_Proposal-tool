@@ -12,7 +12,31 @@ div.starter-template
             input.form-control(type='text', name='description', ng-model='proposal.description', placeholder='Description', required)
             span(ng-show="hasError('description')") Description is required
             span(ng-show="errorDescription") {{ errorDescription }}
-        button.btn.btn-default(type='submit') Create Proposal
+        hr
+        p: strong Start Adding Questions
+        hr
+        div.highlight
+            .form-group
+                input.form-control(type='text', name='questionTitle', ng-model='proposal.questionTitle', placeholder='Question?', required)
+                span(ng-show="hasError('questionTitle')") A Question is required
+                span(ng-show="errorProposalName") {{ errorProposalName }}
+            .form-group
+                select.form-control.input-sm
+                    //add ng-change='' to these options
+                    option(value='radio' ) Multiple Choice
+                    option(value='textbox' ) Text Box
+                hr
+                //ng-include(src="question.qTemplate")
+                input.form-control(type='text', name='questionOption', ng-model='proposal.questionOption', placeholder='Option 1', required)
+                input.form-control.input-sm(type='text', name='questionOptionValue', ng-model='proposal.questionOptionValue', placeholder='Option 1: Value', required)
+                br
+                //button.btn.btn-default(ng-click=(#)) Add Another Question
+                button.pull-right.btn.btn-default() Add an Option
+        br
+        //button.btn.btn-default(ng-click=(#)) Add Another Question
+        button.btn.btn-default() Add a Question
+        hr
+        button.btn.btn-success(type='submit') Create Proposal
         &nbsp;
         a(href='/')
             button.btn.btn-primary(type="button") Cancel

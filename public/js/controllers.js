@@ -74,25 +74,41 @@ angular.module('proposalTool.controllers', [])
 
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
-        $scope.typeChecker = function (text){
-            return text
-        };
+        $scope.grandTotal= 0;
+
+        var answerList = [];
+
+        $scope.total = function(questionId, answerName, value){     // ---> Removed references to answerName because it was throwing a syntax error when answerName included letters
+            var answer ={};                                         // Set an Empty Answer
+            if (answerList.length == 0){                            // if this is the first time you are choosing an answer, just fill it out
+                answer["questionId"] = questionId;
+                answer["value"] = value;
+                answerList.push(answer);                            // Puts the Answer hash into the AnswerList
+                $scope.grandTotal += answerList[0].value
+            }
+            else{
+                $scope.alreadyAnswered = false;
+                for (var i= 0; i<answerList.length; i++ ){
+                    if (questionId == answerList[i].questionId ){
+                        $scope.grandTotal -= answerList[i].value
+                        answerList[i].value=value;
+                        $scope.grandTotal += answerList[i].value
+                        $scope.alreadyAnswered = true;
+                    }
+                }
+                if ($scope.alreadyAnswered==false) {
+                    answer["questionId"] = questionId;
+                    answer["value"] = value;
+                    answerList.push(answer);
+                    $scope.grandTotal += value;
+                }
+            }
+
+            //console.log("The answerList is:");
+            console.log(answerList);
 
 
-        $scope.myTotal = 500;
-        $scope.quote = function(choices) {
-            choices = parseInt(choices);
-            $scope.myTotal += choices;
 
-            return $scope.myTotal;
-        }
-        $scope.grandTotal = 5000;
-        $scope.total = function(value){
-
-            value = parseInt(value);
-            $scope.grandTotal += value;
-
-            return $scope.grandTotal;
         };
 
 
@@ -107,15 +123,15 @@ angular.module('proposalTool.controllers', [])
                     'title':'How many pages will your site have?',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':'10',
+                            'optionChoice':'400',
                             'optionValue':"400"
                         },
                         'opt2':{
-                            'optionChoice':'20',
+                            'optionChoice':'800',
                             'optionValue':"800"
                         },
                         'opt3':{
-                            'optionChoice':'30',
+                            'optionChoice':'1200',
                             'optionValue':"1200"
                         }
                     }
@@ -126,18 +142,18 @@ angular.module('proposalTool.controllers', [])
                     'title':'Fully Custom or Templated',
                     'qOptions': {
                         'opt1':{
-                            'optionChoice':"I want it Fully Custom",
+                            'optionChoice':"1000",
                             'optionValue':"1000"
                         },
                         'opt2':{
-                            'optionChoice': "I'll Choose a template",
+                            'optionChoice': "500",
                             'optionValue':"500"
                         }
                     }
                 },  //end question
                 'q3':{
                     'qId':'3',
-                    'qTemplate':'partials/qTemplate-textbox',
+                    'qTemplate':'partials/qTemplate-radio',
                     'title':'How many photo galleries will you have?',
                     'qOptions': {
                         'opt1':{
@@ -145,18 +161,23 @@ angular.module('proposalTool.controllers', [])
                             'optionValue':"0"
                         },
                         'opt2':{
-                            'optionChoice': "2",
+                            'optionChoice': "200",
                             'optionValue':"200"
                         },
                         'opt3':{
-                            'optionChoice':"4",
+                            'optionChoice':"400",
                             'optionValue':"400"
                         },
                         'opt4':{
-                            'optionChoice': "8",
+                            'optionChoice': "800",
                             'optionValue':"800"
                         }
                     }
+                }, //end question
+                'q4':{
+                    'qId':'4',
+                    'qTemplate':'partials/qTemplate-textbox',
+                    'title':'How many photo galleries will you have?'
                 } //end question
             }
 

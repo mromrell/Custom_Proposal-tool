@@ -35,6 +35,7 @@ module.exports.addProposal = function (req, res) {
         'proposal_name': req.body.proposal_name,
         'description': req.body.description,
         'created': req.body.created
+
     });
 
     proposal.save(function(err){

@@ -336,8 +336,6 @@ angular.module('proposalTool.controllers', [])
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {}
-        $scope.qTemplateCreation='partials/qTemplate-radio';
-        //$scope.qTemplateCreation='partials/qTemplate-textbox';
 
         $scope.addProposal = function() {
             var proposal = {
@@ -345,7 +343,6 @@ angular.module('proposalTool.controllers', [])
                 'description': $scope.proposal.description,
                 'created': new Date()
             };
-
 
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {

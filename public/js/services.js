@@ -27,6 +27,9 @@ angular.module('proposalTool.services', ['angularLocalStorage'])
             },
             getCurrentProposal: function() {
                 return storage.get('proposal');
+            },
+            saveIdToProposal: function() {
+                return storage.get(userId);
             }
         };
     })

@@ -3,6 +3,7 @@ div.starter-template
 
     h1 {{ proposalTitle }}
     p.lead {{ proposalSubTitle }}
+
     form.form-register(role='form', name='proposalForm', ng-submit='addProposal()', style='max-width: 300px;', ng-disabled='disabled')
         .form-group
             input.form-control(type='text', name='proposal_name', ng-model='proposal.proposal_name', placeholder='Proposal name', required)

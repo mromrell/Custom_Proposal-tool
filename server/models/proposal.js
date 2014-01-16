@@ -8,7 +8,9 @@ var proposalSchema = new Schema(
         email: String,
         proposal_name: String,
         description: String,
-        created: Date
+        created: Date,
+        userId: String
+
     },
     {
         collection: 'proposals'

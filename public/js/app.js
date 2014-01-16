@@ -77,8 +77,8 @@ angular.module('proposalTool', [
                 }
             }).
             when('/home', {
-                templateUrl: 'partials/index',
-                controller: 'IndexController',
+                templateUrl: 'partials/proposalList',
+                controller: 'ProposalListController',
                 resolve: {
                     loggedin: checkLoggedin
                 }
@@ -122,7 +122,7 @@ angular.module('proposalTool', [
 
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: 'partials/proposalList'
             });
 
         $locationProvider.html5Mode(true);

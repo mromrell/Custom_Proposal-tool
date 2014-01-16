@@ -17,7 +17,7 @@ div.starter-template
         a(href='deleteProposal/{{proposal._id}}') Delete
     br
     br
-
+    p {{ currentUserInfo }}
     // ng-include(src='\'partials/contacts\'')   //Testing why the Loops aren't working
     div(ng-controller="ContactController")
         h4 How many Contacts are there?

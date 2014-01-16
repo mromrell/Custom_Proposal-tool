@@ -74,7 +74,6 @@ angular.module('proposalTool.controllers', [])
 
     }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
-
         $scope.grandTotal= 0;
         $scope.proposalAnswers = {};
         var answerList = [];                                        // Set an Empty Answer list
@@ -109,10 +108,6 @@ angular.module('proposalTool.controllers', [])
             console.log("The answerList is:");
             console.log(answerList);
 
-            // This totals the value of the answers chosen
-            $scope.grandTotal += value;
-            console.log("The granTotal is: " + $scope.grandTotal);
-            console.log($scope.proposalAnswers);
         };
 
 
@@ -238,6 +233,96 @@ angular.module('proposalTool.controllers', [])
         $scope.proposal = SessionService.getCurrentProposal();
         $scope.currentUserInfo = SessionService.getUserSession();
     }])
+
+    .controller('ProposalOptionsController', ['$scope', function($scope) {
+        $scope.typeChecker = function (text){
+            return text
+        };
+
+        $scope.myTotal = 500;
+        $scope.submitQuote = function(choices) {
+            choices = parseInt(choices);
+            $scope.myTotal += choices;
+
+            return $scope.myTotal;
+        }
+        $scope.grandTotal = 5000;
+        $scope.total = function(value){
+
+            value = parseInt(value);
+            $scope.grandTotal += value;
+
+            return $scope.grandTotal;
+        };
+
+        $scope.proposal = {
+            'id':'1',
+            'title':'Custom Website Cost',
+            'description':'This is an Example Proposal that should give you the price to build a new website',
+            'questions':{
+                'q1':{
+                    'qId':'1',
+                    'qTemplate':'partials/qTemplate-radio',
+                    'title':'How many pages will your site have?',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':'10',
+                            'optionValue':"400"
+                        },
+                        'opt2':{
+                            'optionChoice':'20',
+                            'optionValue':"800"
+                        },
+                        'opt3':{
+                            'optionChoice':'30',
+                            'optionValue':"1200"
+                        }
+                    }
+                },  //end question
+                'q2':{
+                    'qId':'2',
+                    'qTemplate':'partials/qTemplate-radio',
+                    'title':'Fully Custom or Templated',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':"I want it Fully Custom",
+                            'optionValue':"1000"
+                        },
+                        'opt2':{
+                            'optionChoice': "I'll Choose a template",
+                            'optionValue':"500"
+                        }
+                    }
+                },  //end question
+                'q3':{
+                    'qId':'3',
+                    'qTemplate':'partials/qTemplate-textbox',
+                    'title':'How many photo galleries will you have?',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':"0",
+                            'optionValue':"0"
+                        },
+                        'opt2':{
+                            'optionChoice': "2",
+                            'optionValue':"200"
+                        },
+                        'opt3':{
+                            'optionChoice':"4",
+                            'optionValue':"400"
+                        },
+                        'opt4':{
+                            'optionChoice': "8",
+                            'optionValue':"800"
+                        }
+                    }
+                } //end question
+            }
+
+        }
+
+    }])
+
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {}
 
@@ -245,14 +330,13 @@ angular.module('proposalTool.controllers', [])
             var proposal = {
                 'proposal_name': $scope.proposal.proposal_name,
                 'description': $scope.proposal.description,
-                'email': $scope.proposal.email,
                 'created': new Date()
             };
 
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);
-                    $window.location = '/proposalList';
+                    $window.location = '/proposalOptions';
                 }), function(response) {
                     $scope.errorMessage = response;
                 };

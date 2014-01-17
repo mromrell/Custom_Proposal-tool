@@ -3,10 +3,10 @@ div.starter-template
     p This page provides a directory of all of your proposals.
     br
 
-    h4 You currently have: _{{proposals.length}}_ completed proposals.
+    h4 There are currently {{proposals.length}} proposals in the system.
 
     div(ng-repeat='proposal in proposals')
-        h3 {{proposal.name}}
+        h3 {{proposal.proposal_name}}
         div {{proposal.description}}
         a(href='editProposal/{{proposal._id}}') Edit
         | -

@@ -1,7 +1,3 @@
-/*
-** Load the appropriate models
- */
-
 var Proposal = require('../models/proposal.js');
 
 /*

@@ -235,9 +235,15 @@ angular.module('proposalTool.controllers', [])
             }), function(response) {
                 console.log("Error retrieving proposals: " + response);
             };
-
-        $scope.proposal = SessionService.getCurrentProposal();
+        Restangular.all('api/contacts').customGET()
+            .then(function(data) {
+                $scope.contacts = data.contacts;
+            }), function(response) {
+                console.log("Error retrieving contacts: " + response);
+            };
+        $scope.proposals = SessionService.getProposalLength();
         $scope.currentUserInfo = SessionService.getUserSession();
+        $scope.contact = SessionService.getCurrentContact();
     }])
 
 
@@ -248,10 +254,7 @@ angular.module('proposalTool.controllers', [])
             {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
         ];
 
-       //$scope.qtemplateView = $scope.qtemplateViews[0];
-
-
-
+       $scope.qtemplateView = $scope.qtemplateViews[0];
 
         var questionList = {
                 'q1':{

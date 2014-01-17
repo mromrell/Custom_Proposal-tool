@@ -241,6 +241,14 @@ angular.module('proposalTool.controllers', [])
     }])
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
+        $scope.questionCount = [];
+        $scope.questionAdder = function(value){
+            var count = {};
+            count[value] = "1";
+            $scope.questionCount.push(count);
+            console.log($scope.questionCount);
+        }
+
         $scope.proposal = {};
         $scope.qtemplateViews = [
             {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},

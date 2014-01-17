@@ -1,20 +1,46 @@
 div.starter-template
+
+
+    .jumbotron
+        div.row
+            div.col-md-4
+                img(src='../img/proposallogo.png', alt='Custom Proposal Tool').img-responsive.center
+            div.pull-right.col-md-8
+                h1.h1resize Make Custom Proposals
+                h2.thin-small for your Team
+                br
+                p Need a better sales tool? our Custom Proposal tool will let you create your own pricing app so that your sales team can quickly and easily price out your product in front of clients.
+                p
+                a.btn.btn-success.btn-lg(role='button') Learn more
+
     div#messages(ng-show="errorMessage") {{ errorMessage }}
 
-    form.form-signin(ng-submit="doLogin()", name="loginForm", novalidate)
-        h2.form-signin-heading {{ loginTitle }}
+    div.row
+        div.col-md-8
+            form.form-signin(ng-submit="doLogin()", name="loginForm", novalidate)
+                h2.form-signin-heading {{ loginTitle }}
 
-        input.form-control(type="text", name="email", placeholder="Email Address", ng-model="user.email", required, autofocus)
-        span(ng-show="hasError('email')") Email address is required
-        span(ng-show="errorUsername") {{ errorUsername }}
+                input.form-control(type="text", name="email", placeholder="Email Address", ng-model="user.email", required, autofocus)
+                span(ng-show="hasError('email')") Email address is required
+                span(ng-show="errorUsername") {{ errorUsername }}
 
-        input.form-control(type="text", name="password", placeholder="Password", ng-model="user.password", required)
-        span(ng-show="hasError('password')") Password is required
-        span(ng-show="errorPassword") {{ errorPassword }}
+                input.form-control(type="text", name="password", placeholder="Password", ng-model="user.password", required)
+                span(ng-show="hasError('password')") Password is required
+                span(ng-show="errorPassword") {{ errorPassword }}
 
-        button.btn-link Forgot Password?
-        br
-        a(ng-click='register()')
-            button.btn-link Create Account
+                button.btn-link Forgot Password?
+                br
+                a(ng-click='register()')
+                    button.btn-link Create Account
 
-        button(class="btn btn-lg btn-primary btn-block", type="submit") Sign in
+                button(class="btn btn-lg btn-primary btn-block", type="submit") Sign in
+
+        div.bs-callout-info.col-md-3
+          h3 Try it out
+          p Login with the Demo account
+          p
+            strong Username:
+            |  demo
+          p
+            strong Password:
+            |  demo

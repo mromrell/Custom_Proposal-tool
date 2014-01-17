@@ -16,26 +16,34 @@ html(ng-app="proposalTool", ng-controller="BaseController")
                     a.navbar-brand(href='/') Proposal Tool
                 .collapse.navbar-collapse
                     ul.nav.navbar-nav.pull-right
+
                         li(class='dropdown', ng-class='{active:isActive(["/proposalList", "other"])}', logged-in)
-                            a(href='/proposalList', class='dropdown-toggle') Proposals
+                            a(href='/proposalList', class='dropdown-toggle').center
+                                img(src='img/proposals-small.png', alt='Custom Proposal Tool')
+                                p Proposals
                                 ul(class='dropdown-menu')
                                     li
                                         a(href='/addProposal') Add Proposal
                                         a(href='/editProposal') Edit Proposal
                                         a(href='/exampleProposal') Example Proposal
-                        li(ng-class='{active:isActive("/")}', logged-out)
-                            a(href='/') Login
+                        //li(ng-class='{active:isActive("/")}', logged-out)
+                        //    a(href='/') Login
                         li(class='dropdown', ng-class='{active:isActive(["/contacts", "other"])}', logged-in)
-                            a(href='/contacts', class='dropdown-toggle') Contacts
+                            a(href='/contacts', class='dropdown-toggle').center
+                                img(src='img/contacts-small.png', alt='Custom Proposal Tool')
+                                p Contacts
                                 ul(class='dropdown-menu')
                                     li
                                         a(href='/addContact') Add Contact
                         li(class='dropdown', ng-class='{active:isActive(["/myAccount", "other"])}', logged-in)
-                            a(href='/', class='dropdown-toggle') My Account
+                            a(href='/', class='dropdown-toggle').center
+                                img(src='img/myaccount-small.png', alt='Custom Proposal Tool')
+                                p My Account
                                 ul(class='dropdown-menu')
                                     li
                                         a(href='javascript:void(0);', ng-click='doLogout()') Logout
         div(ng-view).container
+
 
         //hr
         //

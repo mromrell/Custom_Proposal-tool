@@ -5,7 +5,7 @@ body {
 }
 
 .starter-template {
-    padding: 40px 15px;
+    padding: 90px 15px;
     text-align: center;
 }
 
@@ -144,4 +144,35 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .rightspace{
     float: right;
     margin-top: 15px;
+}
+.circular {
+    width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	background: url(http://www.lumings.com/py/headshot-mini.jpg) no-repeat;
+    float: left;
+	}
+.thin{
+    font-weight: 100;
+}
+.thin-small{
+    font-size: 40pt;
+    font-weight: 100;
+    margin-top: -18px;
+}
+.h1resize{
+    font-size: 43px; !important
+}
+.center{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bs-callout-info {
+    background-color: #dff0d8;
+    border-color: #666666;
+    margin-top: 70px;
 }

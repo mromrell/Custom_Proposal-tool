@@ -4488,8 +4488,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
-  font-size: 18px;
+  padding: 35px 15px;
+  font-size: 38px;
   line-height: 20px;
 }
 
@@ -5259,7 +5259,7 @@ a.list-group-item.active > .badge,
   }
   .jumbotron h1,
   .jumbotron .h1 {
-    font-size: 63px;
+    font-size: 53px;
   }
 }
 

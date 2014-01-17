@@ -1,4 +1,18 @@
 div.starter-template
+
+
+    .jumbotron
+        div.row
+            div.col-md-4
+                img(src='../img/proposallogo.png', alt='Custom Proposal Tool').img-responsive.center
+            div.pull-right.col-md-8
+                h1.h1resize Make Custom Proposals
+                h2.thin-small for your Team
+                br
+                p Need a better sales tool? our Custom Proposal tool will let you create your own pricing app so that your sales team can quickly and easily price out your product in front of clients.
+                p
+                a.btn.btn-success.btn-lg(role='button') Learn more
+
     div#messages(ng-show="errorMessage") {{ errorMessage }}
 
     form.form-signin(ng-submit="doLogin()", name="loginForm", novalidate)

@@ -145,3 +145,29 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     float: right;
     margin-top: 15px;
 }
+.circular {
+    width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	background: url(http://www.lumings.com/py/headshot-mini.jpg) no-repeat;
+    float: left;
+	}
+.thin{
+    font-weight: 100;
+}
+.thin-small{
+    font-size: 40pt;
+    font-weight: 100;
+    margin-top: -18px;
+}
+.h1resize{
+    font-size: 43px; !important
+}
+.center{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

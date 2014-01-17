@@ -122,10 +122,10 @@ angular.module('proposalTool', [
         RestangularProvider.setBaseUrl('http://proposaltool.herokuapp.com/');
         // IMPORTANT  -  Change the above line to 'http://localhost:3000/' when testing on the local server
         console.log("The Base URL is: http://proposaltool.herokuapp.com/")
-        if (true==true){
-            var heroku="this if statement is only for testing";
-            console.log(heroku);
-        }
+//        if (true==true){
+//            var heroku="this if statement is only for testing";
+//            console.log(heroku);
+//        }
     }])
     .run(['$rootScope', '$location', 'SessionService', function ($rootScope, $location, SessionService) {
         $rootScope.$on("$routeChangeStart", function (event, next, current) {

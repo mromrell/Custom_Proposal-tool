@@ -9,5 +9,8 @@
         "underscore": "latest",
         "restangular": "latest",
         "bootstrap": "latest"
-    }
+    },
+    "resolutions": {
+        "angular": "1.2.8"
+  }
 }

@@ -255,6 +255,13 @@ angular.module('proposalTool.controllers', [])
             $scope.questionCount.push(count);
             console.log($scope.questionCount);
         }
+        $scope.optionCount = [];
+        $scope.optionAdder = function(value){
+            var count = {};
+            count[value] = "1";
+            $scope.optionCount.push(count);
+            console.log($scope.optionCount);
+        }
 
         $scope.proposal = {};
         $scope.qtemplateViews = [

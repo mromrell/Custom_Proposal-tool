@@ -248,6 +248,26 @@ angular.module('proposalTool.controllers', [])
 
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
+        $scope.newProposal = {
+            'id':'',
+            'title':'',
+            'description':'',
+            'questionList':{
+                'q1':{
+                    'qId':'',
+                    'qtemplate':'',
+                    'title':'',
+                    'qOptions': {
+                        'opt1':{
+                            'optionChoice':'',
+                            'optionValue':""
+                        }
+                    }
+                }
+            }
+
+        }
+
         $scope.questionCount = [];
         $scope.questionAdder = function(value){
             var count = {};
@@ -269,7 +289,7 @@ angular.module('proposalTool.controllers', [])
             {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
         ];
 
-       $scope.qtemplateView = $scope.qtemplateViews[0];
+        $scope.qtemplateView = $scope.qtemplateViews[0];
 
         var questionList = {
                 'q1':{
@@ -307,7 +327,7 @@ angular.module('proposalTool.controllers', [])
                 'created': new Date()
             };
 
-            Restangular.all('api/proposal').customPOST(proposal)
+            Restangular.all('api/proposals').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);
                     $window.location = '/proposalList';

@@ -108,13 +108,6 @@ angular.module('proposalTool', [
                     loggedin: checkLoggedin
                 }
             }).
-            when('/proposalOptions', {
-                templateURL: 'partials/proposalOptions',
-                controller: 'ProposalOptionsController,',
-                resolve: {
-                    loggedin: checkLoggedin
-                }
-            }).
             when('/exampleProposal', {
                 templateUrl: 'partials/exampleProposal',
                 controller: 'ExampleProposalController'

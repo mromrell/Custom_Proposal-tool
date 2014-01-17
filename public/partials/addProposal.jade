@@ -17,19 +17,13 @@ div.starter-template
         hr
         div.highlight
             .form-group
-                input.form-control(type='text', name='questionTitle', ng-model='proposal.questionTitle', placeholder='Question?', required)
-                span(ng-show="hasError('questionTitle')") A Question is required
-                span(ng-show="errorProposalName") {{ errorProposalName }}
+                input.form-control(type='text', name='questiontitle', ng-model='proposal.questiontitle', placeholder='Question?', required)
+                span(ng-show="hasError('questiontitle')") A Question is required
+                span(ng-show="errorQuestiontitle") {{ errorQuestiontitle }}
             .form-group
-                select.form-control.input-sm
-                    //add ng-change='' to these options ng-model='optionType'
-                    option(value='radio' ) Multiple Choice
-                    option(value='textbox'  ) Text Box
-            hr
-                //this section needs to be in a seperate view, and called in only if selected
-            ng-include(src="'partials/qTemplateCreation-radio'")
-
-        br
+                select(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews").form-control.input-sm
+                br
+                ng-include(src="qtemplateView.value")
         //button.btn.btn-default(ng-click=(#)) Add Another Question
         button.btn.btn-default() Add a Question
         hr

@@ -119,7 +119,7 @@ angular.module('proposalTool.controllers', [])
             'questions':{
                 'q1':{
                     'qId':'1',
-                    'qTemplate':'partials/qTemplate-radio',
+                    'qtemplate':'partials/qtemplate-radio',
                     'title':'How many pages will your site have?',
                     'qOptions': {
                         'opt1':{
@@ -138,7 +138,7 @@ angular.module('proposalTool.controllers', [])
                 },  //end question
                 'q2':{
                     'qId':'2',
-                    'qTemplate':'partials/qTemplate-radio',
+                    'qtemplate':'partials/qtemplate-radio',
                     'title':'Fully Custom or Templated',
                     'qOptions': {
                         'opt1':{
@@ -153,7 +153,7 @@ angular.module('proposalTool.controllers', [])
                 },  //end question
                 'q3':{
                     'qId':'3',
-                    'qTemplate':'partials/qTemplate-radio',
+                    'qtemplate':'partials/qtemplate-radio',
                     'title':'How many photo galleries will you have?',
                     'qOptions': {
                         'opt1':{
@@ -176,7 +176,7 @@ angular.module('proposalTool.controllers', [])
                 }, //end question
                 'q4':{
                     'qId':'4',
-                    'qTemplate':'partials/qTemplate-textbox',
+                    'qtemplate':'partials/qtemplate-textbox',
                     'title':'How many photo galleries will you have?'
                 } //end question
             }
@@ -240,104 +240,33 @@ angular.module('proposalTool.controllers', [])
         $scope.currentUserInfo = SessionService.getUserSession();
     }])
 
-    .controller('ProposalOptionsController', ['$scope', function($scope) {
-        $scope.typeChecker = function (text){
-            return text
-        };
-
-        $scope.myTotal = 500;
-        $scope.submitQuote = function(choices) {
-            choices = parseInt(choices);
-            $scope.myTotal += choices;
-
-            return $scope.myTotal;
-        }
-        $scope.grandTotal = 5000;
-        $scope.total = function(value){
-
-            value = parseInt(value);
-            $scope.grandTotal += value;
-
-            return $scope.grandTotal;
-        };
-
-        $scope.proposal = {
-            'id':'1',
-            'title':'Custom Website Cost',
-            'description':'This is an Example Proposal that should give you the price to build a new website',
-            'questions':{
-                'q1':{
-                    'qId':'1',
-                    'qTemplate':'partials/qTemplate-radio',
-                    'title':'How many pages will your site have?',
-                    'qOptions': {
-                        'opt1':{
-                            'optionChoice':'10',
-                            'optionValue':"400"
-                        },
-                        'opt2':{
-                            'optionChoice':'20',
-                            'optionValue':"800"
-                        },
-                        'opt3':{
-                            'optionChoice':'30',
-                            'optionValue':"1200"
-                        }
-                    }
-                },  //end question
-                'q2':{
-                    'qId':'2',
-                    'qTemplate':'partials/qTemplate-radio',
-                    'title':'Fully Custom or Templated',
-                    'qOptions': {
-                        'opt1':{
-                            'optionChoice':"I want it Fully Custom",
-                            'optionValue':"1000"
-                        },
-                        'opt2':{
-                            'optionChoice': "I'll Choose a template",
-                            'optionValue':"500"
-                        }
-                    }
-                },  //end question
-                'q3':{
-                    'qId':'3',
-                    'qTemplate':'partials/qTemplate-textbox',
-                    'title':'How many photo galleries will you have?',
-                    'qOptions': {
-                        'opt1':{
-                            'optionChoice':"0",
-                            'optionValue':"0"
-                        },
-                        'opt2':{
-                            'optionChoice': "2",
-                            'optionValue':"200"
-                        },
-                        'opt3':{
-                            'optionChoice':"4",
-                            'optionValue':"400"
-                        },
-                        'opt4':{
-                            'optionChoice': "8",
-                            'optionValue':"800"
-                        }
-                    }
-                } //end question
-            }
-
-        }
-
-    }])
-
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
-        $scope.proposal = {}
-        $scope.qTemplateCreation='partials/qTemplate-radio';
-        //$scope.qTemplateCreation='partials/qTemplate-textbox';
+        $scope.proposal = {};
+        ///////////
+
+        $scope.qtemplateViews = [
+            {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
+            {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
+        ];
+       //$scope.qtemplateView = $scope.qtemplateViews[0];
+
+        /////////////
+        $scope.qtemplateCreation='partials/qtemplateCreation-radio';
+
+
+        //$scope.qtemplateCreation='partials/qtemplate-textbox';
+        var questionList = {};
+//        $scope.proposal.questions = {};
+//        questionList.push($scope.proposal.questions);
+
 
         $scope.addProposal = function() {
             var proposal = {
                 'proposal_name': $scope.proposal.proposal_name,
                 'description': $scope.proposal.description,
+                'questiontitle': $scope.proposal.questiontitle,
+                'qtemplate': $scope.qtemplateView.value,
+                'questions': questionList,
                 'created': new Date()
             };
 
@@ -345,7 +274,7 @@ angular.module('proposalTool.controllers', [])
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);
-                    $window.location = '/proposalOptions';
+                    $window.location = '/proposalList';
                 }), function(response) {
                     $scope.errorMessage = response;
                 };

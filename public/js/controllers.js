@@ -235,10 +235,17 @@ angular.module('proposalTool.controllers', [])
             }), function(response) {
                 console.log("Error retrieving proposals: " + response);
             };
-
-        $scope.proposal = SessionService.getCurrentProposal();
+        Restangular.all('api/contacts').customGET()
+            .then(function(data) {
+                $scope.contacts = data.contacts;
+            }), function(response) {
+                console.log("Error retrieving contacts: " + response);
+            };
+        $scope.proposals = SessionService.getProposalLength();
         $scope.currentUserInfo = SessionService.getUserSession();
+        $scope.contact = SessionService.getCurrentContact();
     }])
+
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.questionCount = [];
@@ -254,8 +261,8 @@ angular.module('proposalTool.controllers', [])
             {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
             {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
         ];
-        $scope.qtemplateView = $scope.qtemplateViews[0];
 
+       $scope.qtemplateView = $scope.qtemplateViews[0];
 
         var questionList = {
                 'q1':{
@@ -292,7 +299,6 @@ angular.module('proposalTool.controllers', [])
                 'question_list': questionList,
                 'created': new Date()
             };
-
 
             Restangular.all('api/proposal').customPOST(proposal)
                 .then(function(data) {

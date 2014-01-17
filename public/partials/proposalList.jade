@@ -10,7 +10,7 @@ div.starter-template
         div {{proposal.description}}
         a(href='editProposal/{{proposal._id}}') Edit
         | -
-        a(href='deleteProposal/{{proposal._id}}') Delete
+        a(href='javascript:void(0);', ng-click='deleteProposal(proposal._id)') Delete
     br
     br
     //p {{ currentUserInfo }}

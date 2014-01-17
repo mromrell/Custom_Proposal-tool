@@ -46,3 +46,29 @@ module.exports.addProposal = function (req, res) {
         });
     });
 };
+
+		module.exports.deleteProposal = function (req, res) {
+		    Proposal.find({'_id': req.params.id}, function (err, proposals) {
+		        if (err) {
+		            res.send(err);
+		        }
+
+		        proposals.forEach(function (proposal) {
+		            proposal.remove(function (err, response) {
+		                if (err) {
+		                    res.send(err);
+		                }
+
+		                Proposal.find({}, function (err, proposals) {
+		                    if (err) {
+		                        res.send(err);
+		                    }
+
+		                    res.json({
+		                        proposals: proposals
+		                    });
+		                });
+		            })
+		        });
+		    });
+		};

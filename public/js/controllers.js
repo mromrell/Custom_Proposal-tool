@@ -241,6 +241,13 @@ angular.module('proposalTool.controllers', [])
             }), function(response) {
                 console.log("Error retrieving contacts: " + response);
             };
+        $scope.deleteProposal = function (proposalId) {
+			Restangular.one('api/proposals/' + proposalId).remove()
+		    	.then(function (data) {
+		        	$scope.proposals = data.proposals;
+		        })
+        }
+
         $scope.proposals = SessionService.getProposalLength();
         $scope.currentUserInfo = SessionService.getUserSession();
         $scope.contact = SessionService.getCurrentContact();

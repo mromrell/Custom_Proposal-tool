@@ -119,7 +119,7 @@ angular.module('proposalTool', [
             });
 
         $locationProvider.html5Mode(true);
-        RestangularProvider.setBaseUrl('http://localhost:3000');
+        RestangularProvider.setBaseUrl('http://proposaltool.herokuapp.com/');
     }])
     .run(['$rootScope', '$location', 'SessionService', function ($rootScope, $location, SessionService) {
         $rootScope.$on("$routeChangeStart", function (event, next, current) {

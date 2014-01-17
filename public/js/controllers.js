@@ -116,7 +116,7 @@ angular.module('proposalTool.controllers', [])
             'id':'1',
             'title':'Custom Website Cost',
             'description':'This is an Example Proposal that should give you the price to build a new website',
-            'questions':{
+            'questionList':{
                 'q1':{
                     'qId':'1',
                     'qtemplate':'partials/qtemplate-radio',
@@ -243,30 +243,49 @@ angular.module('proposalTool.controllers', [])
 
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.proposal = {};
-        ///////////
-
         $scope.qtemplateViews = [
             {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
             {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
         ];
+
        //$scope.qtemplateView = $scope.qtemplateViews[0];
 
-        $scope.qtemplateCreation='partials/qtemplateCreation-radio';
 
 
-        //$scope.qtemplateCreation='partials/qtemplate-textbox';
-        var questionList = {};
+
+        var questionList = {
+                'q1':{
+                    'qId':'1',
+                    'qtemplate':'partials/qtemplate-radio',
+                    'title':'How many pages will your site have?',
+                    'qOptions': {}
+                }
+        };
+        console.log(questionList);
 //        $scope.proposal.questions = {};
 //        questionList.push($scope.proposal.questions);
 
 
-        $scope.addProposal = function() {
+        $scope.addProposal = function() {  //questionNum, optNum
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //var qnum = 'q'.concat(questionNum);
+            //qnum = {};
+            var q1 = {};                               //have 1 be pulled in as a parameter
+            //q1.title["title"] = $scope.proposal.opt1;  //have 1 be pulled in as a parameter
+            q1["title"] = $scope.proposal.opt1;
+            questionList[q1]=q1;
+            console.log(questionList);
+
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             var proposal = {
                 'proposal_name': $scope.proposal.proposal_name,
                 'description': $scope.proposal.description,
                 'questiontitle': $scope.proposal.questiontitle,
                 'qtemplate': $scope.qtemplateView.value,
-                'questions': questionList,
+                'question_list': questionList,
                 'created': new Date()
             };
 

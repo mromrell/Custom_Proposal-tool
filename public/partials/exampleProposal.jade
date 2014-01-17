@@ -6,7 +6,7 @@ div.starter-template
     //p stuff: {{value}}
     br
     br
-    div(ng-repeat='question in proposal.questions')
+    div(ng-repeat='question in proposal.questionList')
         h3 {{question.title}}
         p {{question.type}}
         ng-include(src="question.qtemplate")

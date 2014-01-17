@@ -1,7 +1,3 @@
-/*
-** Load the appropriate models
- */
-
 var Contact = require('../models/contact.js');
 
 /*

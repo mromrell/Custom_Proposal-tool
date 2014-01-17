@@ -8,13 +8,12 @@ var proposalSchema = new Schema(
         email: String,
         proposal_name: String,
         description: String,
-        created: Date,
-        userId: String
-
+        questiontitle: String,
+        qtemplate: String,
+        created: Date
     },
     {
         collection: 'proposals'
     }
 );
-
 module.exports = mongoose.model('proposal', proposalSchema);

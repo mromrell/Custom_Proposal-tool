@@ -5,7 +5,7 @@ body {
 }
 
 .starter-template {
-    padding: 40px 15px;
+    padding: 90px 15px;
     text-align: center;
 }
 
@@ -170,4 +170,9 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+.bs-callout-info {
+    background-color: #dff0d8;
+    border-color: #666666;
+    margin-top: 70px;
 }

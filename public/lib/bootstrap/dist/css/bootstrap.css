@@ -4488,9 +4488,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-brand {
   float: left;
-  padding: 35px 15px;
-  font-size: 38px;
+  padding: 45px 15px;
+  font-size: 58px;
   line-height: 20px;
+  font-family: 'Zeyada', cursive;
 }
 
 .navbar-brand:hover,
@@ -4707,7 +4708,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-brand {
-  color: #777777;
+  color: #e9e9e9;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -4717,11 +4718,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-text {
-  color: #777777;
+  color: #e9e9e9;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777777;
+  color: #e9e9e9;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -4801,12 +4802,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
+  background-color: #3E3A39;
   border-color: #080808;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #e9e9e9;
 }
 
 .navbar-inverse .navbar-brand:hover,
@@ -4833,7 +4834,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background-color: #080808;
+  /*background-color: #999999;*/
 }
 
 .navbar-inverse .navbar-nav > .disabled > a,

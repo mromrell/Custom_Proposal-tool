@@ -2,6 +2,10 @@ div.starter-template
     h1 Hi, {{ currentUserInfo.first_name }} {{ currentUserInfo.last_name }}.
     p This page provides a directory of all of your proposals.
     br
+    button.btn.btn-success(type='button')
+        a.color-grey(href='/addProposal') Create a new Proposal
+    br
+    hr
 
     h4 There are currently {{proposals.length}} proposals in the system.
 
@@ -13,13 +17,3 @@ div.starter-template
         a(href='javascript:void(0);', ng-click='deleteProposal(proposal._id)') Delete
     br
     br
-    //p {{ currentUserInfo }}
-    //div(ng-controller="ContactController")
-    h4 How many Contacts are there?
-    p There are {{contacts.length}} contacts in the System
-    div(ng-repeat='contact in contacts')
-        h3 {{contact.name}}
-        div {{contact.description}}
-        a(href='editContact/{{contact._id}}') Edit
-        | -
-        a(href='deleteContact/{{contact._id}}') Delete

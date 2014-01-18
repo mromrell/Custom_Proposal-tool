@@ -6,6 +6,7 @@ html(ng-app="proposalTool", ng-controller="BaseController")
         title Proposal Tool
         link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet', href='/css/app.css')
+        link(href='http://fonts.googleapis.com/css?family=Zeyada', rel='stylesheet', type='text/css')
     body
         .navbar.navbar-inverse.navbar-fixed-top
             .container
@@ -13,7 +14,9 @@ html(ng-app="proposalTool", ng-controller="BaseController")
                     button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href='/') Proposal Tool
+                    div
+                        img.motion(src='img/logo.jpg', alt='Custom Proposal Tool').pull-left
+                        a.navbar-brand.pull-right(href='/') Proposal Tool
                 .collapse.navbar-collapse
                     ul.nav.navbar-nav.pull-right
 

@@ -176,3 +176,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     border-color: #666666;
     margin-top: 70px;
 }
+.color-grey{
+    color: #E9E9E9;
+}
+.motion{
+    margin-top: 10px;
+    padding-right: 15px;
+}

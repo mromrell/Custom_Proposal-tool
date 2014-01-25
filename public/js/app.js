@@ -119,8 +119,8 @@ angular.module('proposalTool', [
             });
 
         $locationProvider.html5Mode(true);
-        RestangularProvider.setBaseUrl('http://proposaltool.herokuapp.com/');
-        //RestangularProvider.setBaseUrl('http://localhost:3000/');
+        //RestangularProvider.setBaseUrl('http://proposaltool.herokuapp.com/');
+        RestangularProvider.setBaseUrl('http://localhost:3000/');
         // IMPORTANT  -  Change the above line to 'http://localhost:3000/' when testing on the local server
 
     }])

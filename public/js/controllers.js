@@ -253,35 +253,44 @@ angular.module('proposalTool.controllers', [])
         $scope.contact = SessionService.getCurrentContact();
     }])
 
-
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
         $scope.newProposal = {
             'id':'',
             'title':'',
             'description':'',
-            'questionList':{
-                'q1':{
-                    'qId':'',
-                    'qtemplate':'',
-                    'title':'',
+            'questionList':{}
+        }
+
+//        $scope.questionCount = [];
+//        $scope.questionAdder = function(value){
+//            var count = {};
+//            count[value] = "1";
+//            $scope.questionCount.push(count);
+//            console.log($scope.questionCount);
+//        }
+
+        $scope.qcount= 0;
+
+        $scope.questionAdder = function(value){
+            $scope.qcount += 1;
+//            $scope.newProposal.questionList.length+1;
+            $scope.newQuestion = {
+               '$scope.qcount':{
+                    'qId':'1',
+                    'qtemplate':'partials/qtemplate-radio',
+                    'title':'How many pages will your site have?',
                     'qOptions': {
                         'opt1':{
                             'optionChoice':'',
-                            'optionValue':""
+                            'optionValue':''
                         }
                     }
                 }
-            }
-
+            };
+            $scope.newProposal.questionList.push($scope.newQuestion)
+            console.log($scope.newProposal);
         }
 
-        $scope.questionCount = [];
-        $scope.questionAdder = function(value){
-            var count = {};
-            count[value] = "1";
-            $scope.questionCount.push(count);
-            console.log($scope.questionCount);
-        }
         $scope.optionCount = [];
         $scope.optionAdder = function(value){
             var count = {};
@@ -298,14 +307,7 @@ angular.module('proposalTool.controllers', [])
 
         $scope.qtemplateView = $scope.qtemplateViews[0];
 
-        var questionList = {
-                'q1':{
-                    'qId':'1',
-                    'qtemplate':'partials/qtemplate-radio',
-                    'title':'How many pages will your site have?',
-                    'qOptions': {}
-                }
-        };
+
         console.log(questionList);
 //        $scope.proposal.questions = {};
 //        questionList.push($scope.proposal.questions);

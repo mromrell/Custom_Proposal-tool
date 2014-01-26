@@ -253,35 +253,57 @@ angular.module('proposalTool.controllers', [])
         $scope.contact = SessionService.getCurrentContact();
     }])
 
-
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
-        $scope.newProposal = {
-            'id':'',
-            'title':'',
-            'description':'',
-            'questionList':{
-                'q1':{
-                    'qId':'',
-                    'qtemplate':'',
-                    'title':'',
-                    'qOptions': {
-                        'opt1':{
-                            'optionChoice':'',
-                            'optionValue':""
-                        }
-                    }
-                }
-            }
 
-        }
+        var newProposal = [];
+            newProposal['title'] = "Test Proposal Name";
+            newProposal['description'] = "Test Description";
+            newProposal['questionList'] = [];
 
+        $scope.qId= 0;
         $scope.questionCount = [];
         $scope.questionAdder = function(value){
+            $scope.qId += 1;
+
             var count = {};
             count[value] = "1";
             $scope.questionCount.push(count);
-            console.log($scope.questionCount);
-        }
+
+            var newQuestion = [];
+            newQuestion['title'] = null;
+            newQuestion['qtemplate'] = null;
+            newQuestion['options'] = {
+                'optionChoice':null,
+                'optionValue':null
+                };
+
+            newProposal.questionList[$scope.qId] = newQuestion;
+
+            // Work on this piece (Assigning front-end values to the newProposal array)
+            newProposal.questionList[$scope.qId]['title'] = $scope.proposal.questiontitle;
+            newProposal.questionList[$scope.qId]['qtemplate'] = $scope.qtemplateView.value;
+            newProposal.questionList[$scope.qId]['options'] = {
+                'optionChoice':null,
+                'optionValue':null
+                };
+            console.log(newProposal);
+
+//            if ($scope.qId!=0){
+//                newProposal.questionList[$scope.qId] = newQuestion;
+//            }
+
+        };
+/////////////// Everything above this line (on this controller) is new and in Beta
+
+//        $scope.questionCount = [];
+//        $scope.questionAdder = function(value){
+//            $scope.qId += 1;
+//
+//            var count = {};
+//            count[value] = "1";
+//            $scope.questionCount.push(count);
+//        };
+
         $scope.optionCount = [];
         $scope.optionAdder = function(value){
             var count = {};
@@ -298,15 +320,6 @@ angular.module('proposalTool.controllers', [])
 
         $scope.qtemplateView = $scope.qtemplateViews[0];
 
-        var questionList = {
-                'q1':{
-                    'qId':'1',
-                    'qtemplate':'partials/qtemplate-radio',
-                    'title':'How many pages will your site have?',
-                    'qOptions': {}
-                }
-        };
-        console.log(questionList);
 //        $scope.proposal.questions = {};
 //        questionList.push($scope.proposal.questions);
 

@@ -1,6 +1,6 @@
 div.highlight
     .form-group
-        input.form-control(type='text', name='questiontitle', ng-model='proposal.questiontitle', placeholder='Question?', required)
+        input.form-control(type='text', name='{{qId}}questiontitle', ng-model='proposal.questiontitle', placeholder='Question?', required)
         span(ng-show="hasError('questiontitle')") A Question is required
         span(ng-show="errorQuestiontitle") {{ errorQuestiontitle }}
     .form-group

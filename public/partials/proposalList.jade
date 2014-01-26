@@ -1,4 +1,6 @@
 div.starter-template
+    //div.row
+    //div.col-md-6.pull-left
     h1 Hi, {{ currentUserInfo.first_name }} {{ currentUserInfo.last_name }}.
     p This page provides a directory of all of your proposals.
     br
@@ -6,7 +8,7 @@ div.starter-template
         a.color-grey(href='/addProposal') Create a new Proposal
     br
     hr
-
+    //div.col-md-6.pull-right
     h4 There are currently {{proposals.length}} proposals in the system.
 
     div(ng-repeat='proposal in proposals')
@@ -15,5 +17,3 @@ div.starter-template
         a(href='editProposal/{{proposal._id}}') Edit
         | -
         a(href='javascript:void(0);', ng-click='deleteProposal(proposal._id)') Delete
-    br
-    br

@@ -256,8 +256,8 @@ angular.module('proposalTool.controllers', [])
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
 
         var newProposal = [];
-            newProposal['title'] = 'Proposal Title';
-            newProposal['description'] = 'This Describes the proposal briefly';
+            newProposal['title'] = "Test Proposal Name";
+            newProposal['description'] = "Test Description";
             newProposal['questionList'] = [];
 
         $scope.qId= 0;
@@ -279,14 +279,30 @@ angular.module('proposalTool.controllers', [])
 
             newProposal.questionList[$scope.qId] = newQuestion;
 
-            newProposal.questionList[$scope.qId]['title'] = $scope.qId.questiontitle;
-            newProposal.questionList[$scope.qId]['qtemplate'] = $scope.qId.qtemplate;
+            // Work on this piece (Assigning front-end values to the newProposal array)
+            newProposal.questionList[$scope.qId]['title'] = $scope.proposal.questiontitle;
+            newProposal.questionList[$scope.qId]['qtemplate'] = $scope.qtemplateView.value;
             newProposal.questionList[$scope.qId]['options'] = {
                 'optionChoice':null,
                 'optionValue':null
                 };
             console.log(newProposal);
-        }
+
+//            if ($scope.qId!=0){
+//                newProposal.questionList[$scope.qId] = newQuestion;
+//            }
+
+        };
+/////////////// Everything above this line (on this controller) is new and in Beta
+
+//        $scope.questionCount = [];
+//        $scope.questionAdder = function(value){
+//            $scope.qId += 1;
+//
+//            var count = {};
+//            count[value] = "1";
+//            $scope.questionCount.push(count);
+//        };
 
         $scope.optionCount = [];
         $scope.optionAdder = function(value){

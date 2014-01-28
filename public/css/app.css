@@ -183,3 +183,18 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     margin-top: 10px;
     padding-right: 15px;
 }
+.bs-example {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
+    border-style: solid;
+    position: relative;
+    padding: 5px 15px 0px;
+}
+.tdcenter{
+     text-align: center;
+}

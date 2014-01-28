@@ -11,9 +11,28 @@ div.starter-template
     //div.col-md-6.pull-right
     h4 There are currently {{proposals.length}} proposals in the system.
 
-    div(ng-repeat='proposal in proposals')
-        h3 {{proposal.proposal_name}}
-        div {{proposal.description}}
-        a(href='editProposal/{{proposal._id}}') Edit
-        | -
-        a(href='javascript:void(0);', ng-click='deleteProposal(proposal._id)') Delete
+    div.bs-example
+        table.table.table-striped
+            thead
+                tr
+                    th.tdcenter Proposal Name
+                    th.tdcenter Description
+                    th.tdcenter Date Created
+                    th.tdcenter Edit
+                    th.tdcenter Delete
+            tbody(ng-repeat='proposal in proposals')
+                tr
+                    td
+                        a(href='#/locationDetails/{{location.id}}') {{proposal.proposal_name}}
+                    td {{proposal.description}}
+                    td {{proposal.created | date:'MM/dd/yyyy @ h:mma'}}
+                    td
+                        a(href='editProposal/{{proposal._id}}')
+                            span.glyphicon.glyphicon-edit
+                            span.glyphicon-class  Edit
+                    td
+                        a(href='javascript:void(0);', ng-click='deleteProposal(proposal._id)')
+                            span.glyphicon.glyphicon-trash
+                            span.glyphicon-class  Delete
+
+

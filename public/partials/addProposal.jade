@@ -17,11 +17,20 @@ div.starter-template
         p.alert.alert-info: strong Start Adding Questions
         hr
 
-        div(ng-repeat='a in questionCount')
-            ng-include(src="'partials/qtemplateCreation-addQuestion'")
-        button.btn.btn-default(ng-click='questionAdder(4)') Add a Question
-        hr
-        button.btn.btn-success(type='submit') Create Proposal
-        &nbsp;
-        a(href='/')
-            button.btn.btn-primary(type="button") Cancel
+        div(ng-repeat='a in newProposal.questionList')
+            div.highlight
+                .form-group
+                    input.form-control(type='text', name='questiontitle[{{$index}}]', ng-model='proposal.questiontitle', placeholder='Question?', required)
+                    span(ng-show="hasError('questiontitle')") A Question is required
+                    span(ng-show="errorQuestiontitle") {{ errorQuestiontitle }}
+                .form-group
+                    select(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews").form-control.input-sm
+                    br
+                    ng-include(src="qtemplateView.value")
+    button.btn.btn-default(ng-click='questionSaver($index)') Save this Question
+    button.btn.btn-default(ng-click='questionAdder(4)') Add a Question
+    hr
+    button.btn.btn-success(type='submit', ng-click='submit()') Create Proposal
+    &nbsp;
+    a(href='/')
+        button.btn.btn-primary(type="button") Cancel

@@ -252,22 +252,23 @@ angular.module('proposalTool.controllers', [])
         $scope.currentUserInfo = SessionService.getUserSession();
         $scope.contact = SessionService.getCurrentContact();
     }])
-
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
+        $scope.qtemplateViews = [
+            {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
+            {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
+        ];
+        $scope.qtemplateView = $scope.qtemplateViews[0];  // sets the default question type to Radio
 
-        var newProposal = [];
-            newProposal['title'] = "Test Proposal Name";
-            newProposal['description'] = "Test Description";
-            newProposal['questionList'] = [];
+        $scope.newProposal = [];
+        $scope.newProposal['title'] = null;
+        $scope.newProposal['description'] = null;
+        $scope.newProposal['created'] = new Date();
+        $scope.newProposal['questionList'] = [];
 
         $scope.qId= 0;
-        $scope.questionCount = [];
         $scope.questionAdder = function(value){
+            if ($scope.newProposal.questionList.length == 0){}
             $scope.qId += 1;
-
-            var count = {};
-            count[value] = "1";
-            $scope.questionCount.push(count);
 
             var newQuestion = [];
             newQuestion['title'] = null;
@@ -276,34 +277,23 @@ angular.module('proposalTool.controllers', [])
                 'optionChoice':null,
                 'optionValue':null
                 };
-
-            newProposal.questionList[$scope.qId] = newQuestion;
-
-            // Work on this piece (Assigning front-end values to the newProposal array)
-            newProposal.questionList[$scope.qId]['title'] = $scope.proposal.questiontitle;
-            newProposal.questionList[$scope.qId]['qtemplate'] = $scope.qtemplateView.value;
-            newProposal.questionList[$scope.qId]['options'] = {
-                'optionChoice':null,
-                'optionValue':null
-                };
-            console.log(newProposal);
-
-//            if ($scope.qId!=0){
-//                newProposal.questionList[$scope.qId] = newQuestion;
-//            }
-
+            $scope.newProposal.questionList.push(newQuestion);
+            console.log($scope.newProposal);
         };
+        $scope.questionSaver = function(questionId){
+
+            // Work on this piece (Assigning front-end values to the $scope.newProposal array)
+            $scope.newProposal.questionList[questionId]['title'] = $scope.proposal.questiontitle;
+            $scope.newProposal.questionList[questionId]['qtemplate'] = $scope.qtemplateView.value;
+            $scope.newProposal.questionList[questionId]['options'] = {
+                'optionChoice':$scope.proposal.opt1,
+                'optionValue':$scope.proposal.opt1Value
+                };
+            console.log($scope.newProposal);
+        }
+
 /////////////// Everything above this line (on this controller) is new and in Beta
-
-//        $scope.questionCount = [];
-//        $scope.questionAdder = function(value){
-//            $scope.qId += 1;
-//
-//            var count = {};
-//            count[value] = "1";
-//            $scope.questionCount.push(count);
-//        };
-
+        $scope.proposal = {};
         $scope.optionCount = [];
         $scope.optionAdder = function(value){
             var count = {};
@@ -312,41 +302,24 @@ angular.module('proposalTool.controllers', [])
             console.log($scope.optionCount);
         }
 
-        $scope.proposal = {};
-        $scope.qtemplateViews = [
-            {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
-            {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
-        ];
-
-        $scope.qtemplateView = $scope.qtemplateViews[0];
-
-//        $scope.proposal.questions = {};
-//        questionList.push($scope.proposal.questions);
-
-
         $scope.addProposal = function() {  //questionNum, optNum
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            //var qnum = 'q'.concat(questionNum);
-            //qnum = {};
-            var q1 = {};                               //have 1 be pulled in as a parameter
-            //q1.title["title"] = $scope.proposal.opt1;  //have 1 be pulled in as a parameter
-            q1["title"] = $scope.proposal.opt1;
-            questionList[q1]=q1;
-            console.log(questionList);
-
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            var proposal = {
-                'proposal_name': $scope.proposal.proposal_name,
-                'description': $scope.proposal.description,
-                'questiontitle': $scope.proposal.questiontitle,
-                'qtemplate': $scope.qtemplateView.value,
-                'question_list': questionList,
-                'created': new Date()
-            };
-
+//            var q1 = {};                               //have 1 be pulled in as a parameter
+//            //q1.title["title"] = $scope.proposal.opt1;  //have 1 be pulled in as a parameter
+//            q1["title"] = $scope.proposal.opt1;
+//            questionList[q1]=q1;
+//            console.log(questionList);
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//            var proposal = {
+//                'proposal_name': $scope.proposal.proposal_name,
+//                'description': $scope.proposal.description,
+//                'questiontitle': $scope.proposal.questiontitle,
+//                'qtemplate': $scope.qtemplateView.value,
+//                'question_list': questionList,
+//                'created': new Date()
+//            };
+            var proposal = $scope.newProposal;
             Restangular.all('api/proposals').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);
@@ -356,13 +329,13 @@ angular.module('proposalTool.controllers', [])
                 };
         };
 
-        $scope.hasError = function (field, validation) {
-            if (validation) {
-                return $scope.proposalForm[field].$dirty && $scope.proposalForm[field].$error[validation];
-            }
-
-            return $scope.proposalForm[field].$dirty && $scope.proposalForm[field].$invalid;
-        };
+//        $scope.hasError = function (field, validation) {
+//            if (validation) {
+//                return $scope.proposalForm[field].$dirty && $scope.proposalForm[field].$error[validation];
+//            }
+//
+//            return $scope.proposalForm[field].$dirty && $scope.proposalForm[field].$invalid;
+//        };
 
         $scope.proposalTitle = proposalConstants['title'];
         $scope.proposalSubTitle = proposalConstants['subTitle'];

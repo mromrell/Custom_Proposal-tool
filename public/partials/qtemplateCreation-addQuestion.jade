@@ -1,9 +1,0 @@
-div.highlight
-    .form-group
-        input.form-control(type='text', name='{{$index + 1}}questiontitle', ng-model='proposal.questiontitle', placeholder='Question?', required)
-        span(ng-show="hasError('questiontitle')") A Question is required
-        span(ng-show="errorQuestiontitle") {{ errorQuestiontitle }}
-    .form-group
-        select(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews").form-control.input-sm
-        br
-        ng-include(src="qtemplateView.value")

@@ -69,7 +69,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 /* Registration Form */
 .form-register {
-    max-width: 330px;
+    max-width: 500px;
     padding: 15px;
     margin: 0 auto;
 }

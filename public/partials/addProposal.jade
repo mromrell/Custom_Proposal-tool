@@ -4,7 +4,16 @@ div.starter-template
     h1 {{ proposalTitle }}
     p.lead {{ proposalSubTitle }}
 
-    form.form-register(role='form', name='proposalForm', ng-submit='addProposal()', style='max-width: 300px;', ng-disabled='disabled')
+
+    div(ng-repeat='blah in blahs')
+        .preview {{blah.test}} {{$index}}
+    div(ng-repeat='blah in blahs')
+        input(type='text', ng-model='blah.test')
+    button(ng-click='blahAdder();', name='Add Blah', value='Add Blah') Add Blah
+    button(ng-click='blahSubmit();', name='Submit Blah', value='Submit Blah') Submit Blah
+
+
+    form.form-register(role='form', name='proposalForm', ng-submit='addProposal()', ng-disabled='disabled')
         .form-group
             input.form-control(type='text', name='proposal_name', ng-model='proposal.proposal_name', placeholder='Proposal name', required)
             span(ng-show="hasError('proposal_name')") Proposal name is required

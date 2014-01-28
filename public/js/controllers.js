@@ -253,6 +253,19 @@ angular.module('proposalTool.controllers', [])
         $scope.contact = SessionService.getCurrentContact();
     }])
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
+
+        $scope.blahs = [];
+
+        $scope.blahAdder = function() {
+        $scope.blahs[$scope.blahs.length] = { 'test': 'added a new one' };
+        };
+
+        $scope.blahSubmit = function() {
+        console.log('Blahs: ' + JSON.stringify($scope.blahs));
+        };
+
+
+
         $scope.qtemplateViews = [
             {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
             {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
@@ -267,7 +280,7 @@ angular.module('proposalTool.controllers', [])
 
         $scope.qId= 0;
         $scope.questionAdder = function(value){
-            if ($scope.newProposal.questionList.length == 0){}
+//            if ($scope.newProposal.questionList.length == 0){}
             $scope.qId += 1;
 
             var newQuestion = [];

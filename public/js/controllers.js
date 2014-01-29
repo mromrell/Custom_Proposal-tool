@@ -113,6 +113,7 @@ angular.module('proposalTool.controllers', [])
                     if (data.proposals[i]._id == $routeParams.id){
                         $scope.proposal = data.proposals[i];
                         console.log($scope.proposal);
+                        console.log($scope.proposal.questionList[1]);
                     }
                 }
             });
@@ -322,6 +323,7 @@ angular.module('proposalTool.controllers', [])
         };
         $scope.optionAdder = function(question){
             question.options.push({ 'optionChoice':'', 'optionValue':'' });
+//            question.options = { 'optionChoice':'', 'optionValue':'' };
             console.log($scope.newProposal);
         };
 

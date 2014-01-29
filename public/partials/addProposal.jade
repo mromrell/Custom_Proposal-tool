@@ -8,13 +8,13 @@ div.starter-template
         input.form-control.form-group(type='text', name='title', ng-model='proposal.title', placeholder='Proposal name', required)
         input.form-control.form-group(type='text', name='description', ng-model='proposal.description', placeholder='Description', required)
         hr
-        p.alert.alert-info: strong Start Adding Questions
+        p.alert: strong Start Adding Questions
         hr
         div(ng-repeat='question in newProposal.questionList')
             div.highlight
                 input.form-control.form-group(type='text', name='questiontitle]', ng-model='question.title', placeholder='Question?', required)
                 select.form-control.input-sm.form-group(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews")
-                br
+
                 ng-include(src="qtemplateView.value")
     button.btn.btn-default(ng-click='questionAdder(4)') Add a Question
 

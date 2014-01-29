@@ -254,84 +254,54 @@ angular.module('proposalTool.controllers', [])
     }])
     .controller('AddProposalController', ['$scope', '$window', 'proposalConstants', 'Restangular', 'SessionService', function($scope, $window, proposalConstants, Restangular, SessionService) {
 
-        $scope.blahs = [];
-
-        $scope.blahAdder = function() {
-        $scope.blahs[$scope.blahs.length] = { 'test': 'added a new one' };
-        };
-
-        $scope.blahSubmit = function() {
-        console.log('Blahs: ' + JSON.stringify($scope.blahs));
-        };
-
-
-
         $scope.qtemplateViews = [
             {name:'Multiple Choice', value:'partials/qtemplateCreation-radio'},
             {name:'Text Box', value:'partials/qtemplateCreation-textbox'}
         ];
         $scope.qtemplateView = $scope.qtemplateViews[0];  // sets the default question type to Radio
 
-        $scope.newProposal = [];
+        $scope.newProposal = {};
         $scope.newProposal['title'] = null;
         $scope.newProposal['description'] = null;
         $scope.newProposal['created'] = new Date();
         $scope.newProposal['questionList'] = [];
 
-        $scope.qId= 0;
-        $scope.questionAdder = function(value){
-//            if ($scope.newProposal.questionList.length == 0){}
-            $scope.qId += 1;
+//        $scope.blahAdder = function() {
+////            $scope.blahs[$scope.blahs.length] = { 'test': '' };
+//            $scope.newProposal.questionList[$scope.newProposal.questionList.length] = { 'title': '', 'qtemplate': '', 'options':{ 'optionChoice':null, 'optionValue':'' } };
+//        };
 
-            var newQuestion = [];
-            newQuestion['title'] = null;
-            newQuestion['qtemplate'] = null;
-            newQuestion['options'] = {
-                'optionChoice':null,
-                'optionValue':null
-                };
-            $scope.newProposal.questionList.push(newQuestion);
+        $scope.blahSubmit = function() {
+        console.log('newProposal.questionList: ' + JSON.stringify($scope.newProposal.questionList));
+        };
+
+        $scope.questionAdder = function(){
+            $scope.newProposal.questionList[$scope.newProposal.questionList.length] = { 'title': '', 'qtemplate': '', 'options':[]};
             console.log($scope.newProposal);
         };
-        $scope.questionSaver = function(questionId){
-
-            // Work on this piece (Assigning front-end values to the $scope.newProposal array)
-            $scope.newProposal.questionList[questionId]['title'] = $scope.proposal.questiontitle;
-            $scope.newProposal.questionList[questionId]['qtemplate'] = $scope.qtemplateView.value;
-            $scope.newProposal.questionList[questionId]['options'] = {
-                'optionChoice':$scope.proposal.opt1,
-                'optionValue':$scope.proposal.opt1Value
-                };
+        $scope.optionAdder = function(question){
+            question.options.push({ 'optionChoice':'', 'optionValue':'' });
             console.log($scope.newProposal);
-        }
+        };
+//
+//        $scope.questionSaver = function(questionId){
+//
+//            // Work on this piece (Assigning front-end values to the $scope.newProposal array)
+//            $scope.newProposal.questionList[questionId]['title'] = $scope.proposal.questiontitle;
+//            $scope.newProposal.questionList[questionId]['qtemplate'] = $scope.qtemplateView.value;
+//            $scope.newProposal.questionList[questionId]['options'] = {
+//                'optionChoice':$scope.proposal.opt1,
+//                'optionValue':$scope.proposal.opt1Value
+//                };
+//            console.log($scope.newProposal);
+//        }
 
-/////////////// Everything above this line (on this controller) is new and in Beta
         $scope.proposal = {};
-        $scope.optionCount = [];
-        $scope.optionAdder = function(value){
-            var count = {};
-            count[value] = "1";
-            $scope.optionCount.push(count);
-            console.log($scope.optionCount);
-        }
-
-        $scope.addProposal = function() {  //questionNum, optNum
-
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//            var q1 = {};                               //have 1 be pulled in as a parameter
-//            //q1.title["title"] = $scope.proposal.opt1;  //have 1 be pulled in as a parameter
-//            q1["title"] = $scope.proposal.opt1;
-//            questionList[q1]=q1;
-//            console.log(questionList);
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//            var proposal = {
-//                'proposal_name': $scope.proposal.proposal_name,
-//                'description': $scope.proposal.description,
-//                'questiontitle': $scope.proposal.questiontitle,
-//                'qtemplate': $scope.qtemplateView.value,
-//                'question_list': questionList,
-//                'created': new Date()
-//            };
+        $scope.addProposal = function() {
+            $scope.newProposal.title = $scope.proposal.title;
+            $scope.newProposal.description = $scope.proposal.description;
+            $scope.newProposal.created = new Date();
+            console.log($scope.newProposal);
             var proposal = $scope.newProposal;
             Restangular.all('api/proposals').customPOST(proposal)
                 .then(function(data) {

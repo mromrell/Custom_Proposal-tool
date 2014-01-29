@@ -1,9 +1,12 @@
-input.form-control(type='text', name='opt1', ng-model='proposal.opt1', placeholder='Option 1 Name', required)
-input.form-control.input-sm.shade(type='text', name='opt1value', ng-model='proposal.opt1Value', placeholder='Option cost', required)
-br
-input.form-control(type='text', name='opt2', ng-model='proposal.op2', placeholder='Option 2 Name', required)
-input.form-control.input-sm.shade(type='text', name='opt2value', ng-model='proposal.opt2Value', placeholder='Option cost', required)
+//input.form-control(type='text', name='opt1', ng-model='question.options.opt1.optionChoice', placeholder='Option 1 Name', required)
+//input.form-control.input-sm.shade(type='text', name='opt1value', ng-model='question.options.opt1.optionValue', placeholder='Option cost', required)
+//br
+//input.form-control(type='text', name='opt2', ng-model='question.options.opt2.optionChoice', placeholder='Option 2 Name', required)
+//input.form-control.input-sm.shade(type='text', name='opt2value', ng-model='question.options.opt2.optionValue', placeholder='Option cost', required)
 
-div(ng-repeat='a in optionCount')
-    ng-include(src="'partials/qtemplateCreation-radioOption'")
-button.btn.btn-default.rightspace(ng-click='optionAdder(optionCount+1)') Add an Option
+div(ng-repeat='option in question.options')
+    br
+    input.form-control(type='text', name='opt', ng-model='option.optionChoice', placeholder='Option Name', required)
+    input.form-control.input-sm.shade(type='text', name='optvalue', ng-model='option.optionValue', placeholder='Option cost', required)
+
+button.btn.btn-default.rightspace(type="button", ng-click='optionAdder(question)') Add an Option

@@ -28,7 +28,7 @@ module.exports.list = function (req, res) {
 module.exports.addProposal = function (req, res) {
     // Create a proposal in database
     var proposal = new Proposal ({
-        'proposal_name': req.body.proposal_name,
+        'title': req.body.title,
         'description': req.body.description,
         'questiontitle': req.body.questiontitle,
         'qtemplate': req.body.qtemplate,

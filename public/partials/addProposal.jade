@@ -4,42 +4,36 @@ div.starter-template
     h1 {{ proposalTitle }}
     p.lead {{ proposalSubTitle }}
 
-
-    div(ng-repeat='blah in blahs')
-        .preview {{blah.test}} {{$index}}
-    div(ng-repeat='blah in blahs')
-        input(type='text', ng-model='blah.test')
-    button(ng-click='blahAdder();', name='Add Blah', value='Add Blah') Add Blah
-    button(ng-click='blahSubmit();', name='Submit Blah', value='Submit Blah') Submit Blah
-
-
-    form.form-register(role='form', name='proposalForm', ng-submit='addProposal()', ng-disabled='disabled')
-        .form-group
-            input.form-control(type='text', name='proposal_name', ng-model='proposal.proposal_name', placeholder='Proposal name', required)
-            span(ng-show="hasError('proposal_name')") Proposal name is required
-            span(ng-show="errorProposalName") {{ errorProposalName }}
-        .form-group
-            input.form-control(type='text', name='description', ng-model='proposal.description', placeholder='Description', required)
-            span(ng-show="hasError('description')") Description is required
-            span(ng-show="errorDescription") {{ errorDescription }}
+    form.form-register(role='form', name='proposalForm', ng-disabled='disabled')
+        input.form-control.form-group(type='text', name='title', ng-model='proposal.title', placeholder='Proposal name', required)
+        input.form-control.form-group(type='text', name='description', ng-model='proposal.description', placeholder='Description', required)
         hr
         p.alert.alert-info: strong Start Adding Questions
         hr
 
-        div(ng-repeat='a in newProposal.questionList')
+        //div(ng-repeat='question in newProposal.questionList')
+        //    .preview {{$index}} | {{question.title}} | {{question.qtemplate}} | {{question.options.optionChoice}} & {{question.options.optionValue}}
+        //br
+        //div(ng-repeat='question in newProposal.questionList')
+        //    input.form-control.form-group(type='text', ng-model='question.title', placeholder='Question?')
+        //    select.form-control.input-sm.form-group(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews")
+        //    ng-include(src="qtemplateView.value")
+        //    br
+        //button(ng-click='blahAdder();', name='Add Blah', value='Add Blah') Add Blah
+        //button(ng-click='blahSubmit();', name='Submit Blah', value='Submit Blah') Submit Blah
+
+        div(ng-repeat='question in newProposal.questionList')
             div.highlight
-                .form-group
-                    input.form-control(type='text', name='questiontitle[{{$index}}]', ng-model='proposal.questiontitle', placeholder='Question?', required)
-                    span(ng-show="hasError('questiontitle')") A Question is required
-                    span(ng-show="errorQuestiontitle") {{ errorQuestiontitle }}
-                .form-group
-                    select(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews").form-control.input-sm
-                    br
-                    ng-include(src="qtemplateView.value")
-    button.btn.btn-default(ng-click='questionSaver($index)') Save this Question
+                input.form-control.form-group(type='text', name='questiontitle]', ng-model='question.title', placeholder='Question?', required)
+                select.form-control.input-sm.form-group(ng-model="qtemplateView", ng-options="c.name for c in qtemplateViews")
+                br
+                ng-include(src="qtemplateView.value")
+    //button.btn.btn-default(ng-click='questionSaver($index)') Save this Question
+    button(ng-click='blahSubmit();', name='Submit Blah', value='Submit Blah') Submit Blah
     button.btn.btn-default(ng-click='questionAdder(4)') Add a Question
+
     hr
-    button.btn.btn-success(type='submit', ng-click='submit()') Create Proposal
+    button.btn.btn-success(ng-click='addProposal()') Create Proposal
     &nbsp;
     a(href='/')
         button.btn.btn-primary(type="button") Cancel

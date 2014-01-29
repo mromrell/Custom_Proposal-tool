@@ -6,7 +6,7 @@ var proposalSchema = new Schema(
     {
         id: ObjectId,
         email: String,
-        proposal_name: String,
+        title: String,
         description: String,
         questiontitle: String,
         qtemplate: String,

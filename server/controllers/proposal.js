@@ -30,9 +30,9 @@ module.exports.addProposal = function (req, res) {
     var proposal = new Proposal ({
         'title': req.body.title,
         'description': req.body.description,
-        'questiontitle': req.body.questiontitle,
-        'qtemplate': req.body.qtemplate,
-        'created': req.body.created
+        'created': req.body.created,
+        'questionList': req.body.questionList
+
     });
 
     proposal.save(function(err){

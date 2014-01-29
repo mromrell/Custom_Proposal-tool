@@ -76,6 +76,10 @@ angular.module('proposalTool', [
                     loggedin: checkLoggedin
                 }
             }).
+            when('/proposalDetails/:id', {
+                templateUrl: 'partials/proposalDetails',
+                controller: 'ProposalDetailsController'
+            }).
             when('/home', {
                 templateUrl: 'partials/proposalList',
                 controller: 'ProposalListController',
@@ -111,8 +115,6 @@ angular.module('proposalTool', [
             when('/exampleProposal', {
                 templateUrl: 'partials/exampleProposal',
                 controller: 'ExampleProposalController'
-
-
             }).
             otherwise({
                 redirectTo: 'partials/proposalList'

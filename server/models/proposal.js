@@ -5,12 +5,10 @@ var mongoose = require('mongoose'),
 var proposalSchema = new Schema(
     {
         id: ObjectId,
-        email: String,
         title: String,
         description: String,
-        questiontitle: String,
-        qtemplate: String,
-        created: Date
+        created: Date,
+        questionList: String
     },
     {
         collection: 'proposals'

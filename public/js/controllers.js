@@ -73,6 +73,56 @@ angular.module('proposalTool.controllers', [])
     .controller('TestController', ['$scope', function($scope) {
 
     }])
+     .controller('ProposalDetailsController', ['$scope', 'Restangular', '$routeParams', function($scope, Restangular, $routeParams) {
+        $scope.grandTotal= 0;
+
+        var answerList = [];
+
+        $scope.total = function(questionId, answerName, value){     // ---> Removed references to answerName because it was throwing a syntax error when answerName included letters
+            var answer ={};                                         // Set an Empty Answer
+            if (answerList.length == 0){                            // if this is the first time you are choosing an answer, just fill it out
+                answer["questionId"] = questionId;
+                answer["value"] = value;
+                answerList.push(answer);                            // Puts the Answer hash into the AnswerList
+                $scope.grandTotal += answerList[0].value
+            }
+            else{
+                $scope.alreadyAnswered = false;
+                for (var i= 0; i<answerList.length; i++ ){
+                    if (questionId == answerList[i].questionId ){
+                        $scope.grandTotal -= answerList[i].value
+                        answerList[i].value=value;
+                        $scope.grandTotal += answerList[i].value
+                        $scope.alreadyAnswered = true;
+                    }
+                }
+                if ($scope.alreadyAnswered==false) {
+                    answer["questionId"] = questionId;
+                    answer["value"] = value;
+                    answerList.push(answer);
+                    $scope.grandTotal += value;
+                }
+            }
+            //console.log("The answerList is:");
+            console.log(answerList);
+        };
+
+        Restangular.all('api/proposals').customGET()
+            .then(function(data) {
+                for (var i=0; i<data.proposals.length; i++){
+                    if (data.proposals[i]._id == $routeParams.id){
+                        $scope.proposal = data.proposals[i];
+                        console.log($scope.proposal);
+                    }
+                }
+            });
+
+        //This is used to choose the right project data to display based on the URL/project selected
+//        PortfolioListService.success(function(portfolioList) {
+//            $scope.project = portfolioList[$routeParams.id];
+//
+//        });
+    }])
     .controller('ExampleProposalController', ['$scope', function($scope) {
         $scope.grandTotal= 0;
 
@@ -266,15 +316,6 @@ angular.module('proposalTool.controllers', [])
         $scope.newProposal['created'] = new Date();
         $scope.newProposal['questionList'] = [];
 
-//        $scope.blahAdder = function() {
-////            $scope.blahs[$scope.blahs.length] = { 'test': '' };
-//            $scope.newProposal.questionList[$scope.newProposal.questionList.length] = { 'title': '', 'qtemplate': '', 'options':{ 'optionChoice':null, 'optionValue':'' } };
-//        };
-
-        $scope.blahSubmit = function() {
-        console.log('newProposal.questionList: ' + JSON.stringify($scope.newProposal.questionList));
-        };
-
         $scope.questionAdder = function(){
             $scope.newProposal.questionList[$scope.newProposal.questionList.length] = { 'title': '', 'qtemplate': '', 'options':[]};
             console.log($scope.newProposal);
@@ -283,29 +324,18 @@ angular.module('proposalTool.controllers', [])
             question.options.push({ 'optionChoice':'', 'optionValue':'' });
             console.log($scope.newProposal);
         };
-//
-//        $scope.questionSaver = function(questionId){
-//
-//            // Work on this piece (Assigning front-end values to the $scope.newProposal array)
-//            $scope.newProposal.questionList[questionId]['title'] = $scope.proposal.questiontitle;
-//            $scope.newProposal.questionList[questionId]['qtemplate'] = $scope.qtemplateView.value;
-//            $scope.newProposal.questionList[questionId]['options'] = {
-//                'optionChoice':$scope.proposal.opt1,
-//                'optionValue':$scope.proposal.opt1Value
-//                };
-//            console.log($scope.newProposal);
-//        }
 
         $scope.proposal = {};
         $scope.addProposal = function() {
             $scope.newProposal.title = $scope.proposal.title;
             $scope.newProposal.description = $scope.proposal.description;
             $scope.newProposal.created = new Date();
-            console.log($scope.newProposal);
+            console.log("newProposal: " + $scope.newProposal);
             var proposal = $scope.newProposal;
             Restangular.all('api/proposals').customPOST(proposal)
                 .then(function(data) {
                     SessionService.saveCurrentProposal(data.proposal);
+                    console.log("data.proposal " + data.proposal);
                     $window.location = '/proposalList';
                 }), function(response) {
                     $scope.errorMessage = response;

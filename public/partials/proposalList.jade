@@ -23,7 +23,7 @@ div.starter-template
             tbody(ng-repeat='proposal in proposals')
                 tr
                     td
-                        a(href='#/locationDetails/{{location.id}}') {{proposal.title}}
+                        a(href='/proposalDetails/{{proposal._id}}') {{proposal.title}}
                     td {{proposal.description}}
                     td {{proposal.created | date:'MM/dd/yyyy @ h:mma'}}
                     td

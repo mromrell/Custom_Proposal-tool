@@ -1,0 +1,43 @@
+<div class="starter-template">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4"><img src="../img/proposallogo.png" alt="Custom Proposal Tool"
+                                       class="img-responsive center"/></div>
+            <div class="pull-right col-md-8"><h1 class="h1resize">Make Custom Proposals</h1>
+
+                <h2 class="thin-small">for your Team</h2><br/>
+
+                <p>Need a better sales tool? our Custom Proposal tool will let you create your own pricing app so that
+                    your sales team can quickly and easily price out your product in front of clients.</p>
+
+                <p></p><a role="button" class="btn btn-success btn-lg">Learn more</a></div>
+        </div>
+    </div>
+    <div id="messages" ng-show="errorMessage">{{ errorMessage }}</div>
+    <div class="row">
+        <div class="col-md-8">
+            <form ng-submit="doLogin()" name="loginForm" novalidate="novalidate" class="form-signin"><h2
+                    class="form-signin-heading">{{ loginTitle }}</h2><input type="text" name="email"
+                                                                            placeholder="Email Address"
+                                                                            ng-model="user.email" required="required"
+                                                                            autofocus="autofocus" class="form-control"/><span
+                    ng-show="hasError('email')">Email address is required</span><span ng-show="errorUsername">{{ errorUsername }}</span><input
+                    type="text" name="password" placeholder="Password" ng-model="user.password" required="required"
+                    class="form-control"/><span ng-show="hasError('password')">Password is required</span><span
+                    ng-show="errorPassword">{{ errorPassword }}</span>
+                <button class="btn-link">Forgot Password?</button>
+                <br/><a ng-click="register()">
+                    <button class="btn-link">Create Account</button>
+                </a>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+            </form>
+        </div>
+        <div class="bs-callout-info col-md-3"><h3>Try it out</h3>
+
+            <p>Login with the Demo account</p>
+
+            <p><strong>Username:</strong> demo</p>
+
+            <p><strong>Password:</strong> demo</p></div>
+    </div>
+</div>

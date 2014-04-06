@@ -73,7 +73,7 @@ angular.module('proposalTool', [
                 templateUrl: 'partials/proposalList',
                 controller: 'ProposalListController',
                 resolve: {
-                    loggedin: checkLoggedin
+//                    loggedin: checkLoggedin
                 }
             }).
             when('/proposalDetails/:id', {
@@ -84,7 +84,7 @@ angular.module('proposalTool', [
                 templateUrl: 'partials/proposalList',
                 controller: 'ProposalListController',
                 resolve: {
-                    loggedin: checkLoggedin
+//                    loggedin: checkLoggedin
                 }
             }).
             when('/register', {
@@ -95,21 +95,21 @@ angular.module('proposalTool', [
                 templateUrl: 'partials/contacts',
                 controller: 'ContactController',
                 resolve: {
-                    loggedin: checkLoggedin
+//                    loggedin: checkLoggedin
                 }
             }).
             when('/addContact', {
                 templateUrl: 'partials/addContact',
                 controller: 'AddContactController',
                 resolve: {
-                    loggedin: checkLoggedin
+//                    loggedin: checkLoggedin
                 }
             }).
             when('/addProposal', {
                 templateUrl: 'partials/addProposal',
                 controller: 'AddProposalController',
                 resolve: {
-                    loggedin: checkLoggedin
+//                    loggedin: checkLoggedin
                 }
             }).
             when('/exampleProposal', {
@@ -121,7 +121,7 @@ angular.module('proposalTool', [
             });
 
         $locationProvider.html5Mode(true);
-        //RestangularProvider.setBaseUrl('http://proposaltool.herokuapp.com/');
+//        RestangularProvider.setBaseUrl('http://localhost:3000/');
         RestangularProvider.setBaseUrl('http://osborn-proposal-tool.herokuapp.com/');
         // IMPORTANT  -  Change the above line to 'http://localhost:3000/' when testing on the local server
 
